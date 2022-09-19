@@ -62,7 +62,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios.js',
-    '~/plugins/i18n-routing.js',
     '~/plugins/apexchart.js',
     '~/plugins/google-maps.js',
     '~/plugins/vue-debounce.js',
