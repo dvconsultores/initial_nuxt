@@ -94,6 +94,12 @@ export default {
     baseURL: development ? 'http://localhost:3001/api' : 'https://domain/api',
   },
 
+  // nuxt i18n documentation: https://i18n.nuxtjs.org
+  /*
+    1- function to switch language: switchLocalePath('en')
+    2- function to push prefix routes: localePath('/')
+    3- i18n data object: $i18n.locale  --> locale language
+  */
   i18n: {
     locales: [
       { code: "es", iso: "es", file: "es.js" },
