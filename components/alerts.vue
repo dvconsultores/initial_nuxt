@@ -7,7 +7,7 @@
       transition="slide-Y-reverse-transition"
       :style="`--color-snackbar: ${item.color}`"
     >
-      <!-- <v-icon :style="`color: ${item.color} !important`" size="2.5rem">{{ item.icon }}</v-icon> -->
+      <!-- <v-icon :style="`color: ${item.color} !important`" size="3.5em">{{ item.icon }}</v-icon> -->
       <img :src="require(`~/assets/sources/icons/${item.icon}.svg`)" :alt="`${item.key} Icon`">
       <div class="divcol">
         <h3 v-if="item.title_default" class="font1">{{$t(item.title_default)}}</h3>
