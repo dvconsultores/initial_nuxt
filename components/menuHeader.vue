@@ -30,7 +30,7 @@
               <v-expansion-panel-header class="conttitle acenter gap1 h10_em" hide-actions @click="ActiveClass('expansion', item)">
                   <img :src="require(`~/assets/sources/icons/${item.key}${item.active?'-active':''}.svg`)" :alt="`${item.key} icon`" class="icon" :class="{active: item.active}">
                   <span class="normal" style="max-width: max-content">{{ item.name }}</span>
-                  <v-icon small color="#ffffff" :class="{active_rotate: item.active}">mdi-menu-down</v-icon>
+                  <v-icon small color="#ffffff" :class="{reverse: item.active}">mdi-menu-down</v-icon>
               </v-expansion-panel-header>
 
               <v-expansion-panel-content>
