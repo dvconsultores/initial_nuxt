@@ -29,7 +29,7 @@ export default {
     });
     
     /* footer height listener */
-    function footerHeightListener() {
+    const footerHeightListener = () => {
       const footer = document.querySelector('#footer');
       setTimeout(() => {
         document.documentElement.style.setProperty(
