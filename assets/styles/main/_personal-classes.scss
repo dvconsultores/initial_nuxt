@@ -155,12 +155,16 @@
   flex-direction: column-reverse;
 }
 .wrap {
+  --fb: initial;
   display: flex;
   flex-wrap: wrap;
+  & > * {flex-basis: var(--fb) !important}
 }
 .wrap_inv {
+  --fb: initial;
   display: flex;
   flex-wrap: wrap-reverse;
+  & > * {flex-basis: var(--fb) !important}
 }
 .nowrap {
   display: flex !important;
@@ -452,12 +456,16 @@
     flex-direction: column-reverse !important;
   }
   .wrapmobile {
+    --fb: initial;
     display: flex !important;
     flex-wrap: wrap !important;
+    & > * {flex-basis: var(--fb) !important}
   }
   .wrap_invmobile {
+    --fb: initial;
     display: flex !important;
     flex-wrap: wrap-reverse !important;
+    & > * {flex-basis: var(--fb) !important}
   }
   .nowrapmobile {
     display: flex !important;
