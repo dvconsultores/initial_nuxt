@@ -128,6 +128,14 @@ body {background: var(--bg-ap)}
   & * {color: var(--clr-text-btn) !important}
 }
 
+.activeBtn {
+  transition: .5s $ease-return;
+  &::after, &::before {display: none !important}
+  &:active {
+    --bs: inset 0 6px 4px 0px rgba(0, 0, 0, .3);
+  }
+}
+
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 /* // // transition routes // // */ 
