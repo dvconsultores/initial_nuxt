@@ -29,36 +29,22 @@ export const mutations = {
     if (theme === "light") {state.overlay.opacity = "0.2"; state.overlay.color = "white"}
   },
   getData(state) {
-    state.dataUser.accountId = wallet.getAccountId()
-
     if (wallet.isSignedIn()) {
-      // current conexion refused error 👇
-      const url = `api/v1/profile/?wallet=${state.dataUser.accountId}`
-      this.$axios.defaults.headers.common.Authorization = 'token'
-      this.$axios.$get(url).then((response) => {
-        // set avatar
-        if (response.data[0]) {
-          state.dataUser.avatar = response.data[0].avatar;
-        }
-      }).catch((error) => console.error(error));
+      localStorage.setItem('auth', true);
+      state.dataUser.user = true;
+      state.dataUser.accountId = wallet.getAccountId();
     };
   },
   signIn() {
     wallet.requestSignIn(
       'contract.nearbase.testnet'
-    )
-  },
-  isSigned(state) {
-    if (wallet.isSignedIn()) {
-      localStorage.setItem('auth', true)
-      state.dataUser.user = true
-    }
+    );
   },
   signOut(state) {
-    wallet.signOut()
-    localStorage.setItem('auth', false)
-    state.dataUser.user = false
-    this.$router.push(this.localePath({ path: '/' }))
+    wallet.signOut();
+    localStorage.setItem('auth', false);
+    state.dataUser.user = false;
+    this.$router.push(this.localePath({ path: '/' }));
   },
 };
 
@@ -73,7 +59,6 @@ export const actions = {
     const near = await connect(config);
     // create wallet connection
     wallet = new WalletConnection(near)
-    commit( "isSigned");
     commit( "getData");
   }
 };
