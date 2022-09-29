@@ -35,19 +35,21 @@
       </v-btn>
 
       <section class="acenter gap2">
-        <v-btn v-show="!user" class="btn eliminarmobile" @click="$router.push(localePath('/login'))">LOG IN WITH NEAR</v-btn>
+        <template v-if="!user.user">
+          <v-btn class="btn eliminarmobile" @click="$store.commit('signIn')">LOG IN WITH NEAR</v-btn>
+          <v-btn icon @click="$store.commit('signIn')">
+            <img :src="require(`~/assets/sources/icons/account.svg`)" alt="account" class="eliminarmobile aspect" style="--w:3em">
+            <img :src="require(`~/assets/sources/icons/account-mobile.svg`)" alt="account" class="vermobile aspect" style="--w:3em">
+          </v-btn>
+        </template>
 
         <!-- console.log('abrir-menu-perfil') -->
-        <div :class="{acenter: user, contents: !user}" class="openMenuLogin" style="cursor:pointer;border-radius:4vmax">
-          <v-btn icon @click="user?null:$router.push(localePath('/login'))">
-            <img
-              :src="user?$store.state.user.img:require(`~/assets/sources/icons/account.svg`)" alt="account" class="eliminarmobile aspect"
-              :style="`--w:3em;${user?'--br:50%;--b:2px solid var(--clr);--p:4px':null}`">
-            <img
-              :src="user?$store.state.user.img:require(`~/assets/sources/icons/account-mobile.svg`)" alt="account" class="vermobile aspect"
-              :style="`--w:3em;${user?'--br:50%;--b:2px solid var(--clr);--p:4px':null}`">
+        <div v-show="user.user" class="openMenuLogin acenter" style="cursor:pointer;border-radius:4vmax">
+          <v-btn icon>
+            <img :src="user.avatar" alt="account" class="eliminarmobile aspect" style="--w:3em;--br:50%;--b:2px solid var(--clr);--p:4px">
+            <img :src="user.avatar" alt="account" class="vermobile aspect" style="--w:3em;--br:50%;--b:2px solid var(--clr);--p:4px">
           </v-btn>
-          <v-icon v-show="user">mdi-menu-down</v-icon>
+          <v-icon v-show="user.user">mdi-menu-down</v-icon>
         </div>
       </section>
     </v-app-bar>
@@ -55,26 +57,10 @@
 </template>
 
 <script>
-import * as nearAPI from 'near-api-js'
-
-const { connect, keyStores, WalletConnection } = nearAPI
-
-const keyStore = new keyStores.BrowserLocalStorageKeyStore()
-const config = {
-  networkId: "testnet",
-  keyStore, 
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
 export default {
   name: "HeaderComponent",
   data() {
     return {
-      accountId: null,
-      user: false,
       messages: 1,
       sidebar: false,
       initialFocus: 0,
@@ -89,24 +75,19 @@ export default {
     };
   },
   computed: {
-    perfil() {return this.$store.state.user.perfil},
+    user() {return this.$store.state.dataUser},
   },
   // created() {
   //   const theme = localStorage.getItem("theme");
   //   if (theme) {
   //     setTimeout(() => {
-  //       this.$store.dispatch("CambiarTheme", theme);
+  //       this.$store.dispatch("cambiarTheme", theme);
   //       this.$store.commit('OverlayMethod', theme)
   //     }, 100);
   //   }
   //   if (theme === "light") {this.themeButton = true}
   //   if (theme === "dark") {this.themeButton = false}
   // },
-  mounted() {
-    this.isSigned()
-    this.getData()
-    this.LogState();
-  },
   methods: {
     activeSidebarIcons(item) {
       this.dataSidebar.forEach(e=>{e.active=false});
@@ -125,60 +106,10 @@ export default {
         else {this.initialFocus=16}
       }
     },
-    // CambiarTheme(theme) {
-    //   this.$store.dispatch("CambiarTheme", theme);
+    // cambiarTheme(theme) {
+    //   this.$store.dispatch("cambiarTheme", theme);
     //   this.themeButton = !this.themeButton;
     // },
-    async getData () {
-      this.account = {}
-      // connect to NEAR
-      const near = await connect(config);
-      // create wallet connection
-      const wallet = new WalletConnection(near)
-      this.accountId= wallet.getAccountId()
-
-      if (wallet.isSignedIn()) {
-        const url = "api/v1/profile/?wallet=" + this.accountId
-        this.axios.defaults.headers.common.Authorization='token'
-        this.axios.get(url)
-          .then((response) => {
-            if (response.data[0]){
-              this.avatar = response.data[0].avatar
-              this.$store.commit("Avatar", this.avatar)
-            }
-        }).catch((error) => {
-          alert(error)
-        })
-      }
-    },
-    // use for update account log states
-    LogState() {
-      if (JSON.parse(localStorage.getItem('auth')) === true) {this.user = true}
-      else {this.user = false}
-    },
-    async signIn () {
-      const near = await connect(config);
-      const wallet = new WalletConnection(near)
-      wallet.requestSignIn(
-        'contract.nearbase.testnet'
-      )
-    },
-    async isSigned () {
-      const near = await connect(config);
-      const wallet = new WalletConnection(near)
-      if (wallet.isSignedIn()) {
-        localStorage.setItem('auth', true)
-        this.user = true
-      }
-    },
-    async signOut () {
-      const near = await connect(config);
-      const wallet = new WalletConnection(near)
-      wallet.signOut()
-      localStorage.setItem('auth', false)
-      this.user = false
-      this.$router.push(this.localePath({ path: '/' }))
-    },
   },
 };
 </script>

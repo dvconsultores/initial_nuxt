@@ -98,7 +98,9 @@
     <v-menu activator=".openMenuLogin" right offset-x>
       <v-list class="font2" color="var(--secondary)" style="--c:#fff">
         <v-list-item-group active-class="activeClass">
-          <v-list-item v-for="(item,i) in dataMenuLogin" :key="i" @click="Logout(item.key)">
+          <v-list-item
+            v-for="(item,i) in dataMenuLogin" :key="i"
+            @click="item.key==='logout' ? $store.commit('signOut') : $router.push(`${$i18n.locale}/${key}`)">
             <v-list-item-title>{{item.name}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
@@ -167,7 +169,7 @@ export default {
   },
   // created() {
   //   const theme = localStorage.getItem("theme");
-  //   this.OverlayMethod(theme);
+  //   this.overlayMethod(theme);
   // },
   methods: {
     ActiveClass(key, item) {
@@ -185,10 +187,6 @@ export default {
         this.dataDrawer.list.forEach(e=>{e.active=false})
         item.active=true
       }
-    },
-    Logout(key) {
-      if (key === 'logout') {localStorage.setItem('auth', false);this.$router.push(this.localePath('/'));this.$router.go()}
-      else {this.$router.push(`${this.$i18n.locale}/${key}`)}
     },
   },
 };

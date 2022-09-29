@@ -19,6 +19,9 @@ export default {
     }
   },
   mounted() {
+    // login inicializer
+    this.$store.dispatch("InicializeNear");
+    
     /* scroll horizontal (simple) */
     const scrollable = document.querySelectorAll('[class*="scrollx"]');
     scrollable.forEach((el) => {
