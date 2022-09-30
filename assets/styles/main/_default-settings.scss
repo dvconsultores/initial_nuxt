@@ -573,3 +573,13 @@ img:not(.not_html, .not) {
 .card {
   @include card;
 }
+
+//- close -//
+.close {
+  --distance: 0;
+  --top: var(--distance);
+  --right: var(--distance);
+  position: absolute !important;
+  top: var(--top);
+  right: var(--right);
+}
