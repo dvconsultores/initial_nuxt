@@ -45,10 +45,11 @@
 
         <!-- console.log('abrir-menu-perfil') -->
         <div v-show="user.user" class="openMenuLogin acenter" style="cursor:pointer;border-radius:4vmax">
-          <v-btn icon>
+          <v-btn v-if="user.avatar" icon>
             <img :src="user.avatar" alt="account" class="eliminarmobile aspect" style="--w:3em;--br:50%;--b:2px solid var(--clr);--p:4px">
             <img :src="user.avatar" alt="account" class="vermobile aspect" style="--w:3em;--br:50%;--b:2px solid var(--clr);--p:4px">
           </v-btn>
+          <v-skeleton-loader v-else type="avatar" />
           <v-icon v-show="user.user">mdi-menu-down</v-icon>
         </div>
       </section>
@@ -71,7 +72,7 @@ export default {
         { key:"chats", icon: "chats", name:"chats", to: "/chats", position: 360, active: false },
         { key:"settings", icon: "settings", name:"settings", position: 480, active: false  },
         { key:"faq", icon: "faq", name:"faq", position: 600, active: false  },
-      ]
+      ],
     };
   },
   computed: {
