@@ -548,16 +548,6 @@ img:not(.not_html, .not) {
   // @include media(max, 500px) {margin-inline: 0}
 }
 
-
-// under testing
-.v-dialog--scrollable {
-  @include media(max, small) {margin: 0 !important; min-height: 100% !important}
-  padding: 1em;
-  border-radius: 20px 30px 50px 50px / 100px !important;
-  // border: 2px solid $primary !important;
-  background: var(--clr-card-2) !important;
-  &>*,.v-card {background-color: transparent}
-}
 //---------------------------------------------------------------------------------------------//
 
 
