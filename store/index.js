@@ -18,7 +18,6 @@ export const state = () => ({
     avatar: '',
     accountId: null,
     user: false,
-    tier: 3,
   },
 });
 
@@ -30,7 +29,6 @@ export const mutations = {
   },
   getData(state) {
     if (wallet.isSignedIn()) {
-      localStorage.setItem('auth', true);
       state.dataUser.user = true;
       state.dataUser.accountId = wallet.getAccountId();
     };
@@ -42,7 +40,6 @@ export const mutations = {
   },
   signOut(state) {
     wallet.signOut();
-    localStorage.setItem('auth', false);
     state.dataUser.user = false;
     this.$router.push(this.localePath({ path: '/' }));
   },
