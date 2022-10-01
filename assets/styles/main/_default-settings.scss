@@ -392,6 +392,7 @@ img:not(.not_html, .not) {
   --bs: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   --f: none;
   --t: none;
+  --o-disabled: .5;
   // normal
   --fs: 1.2em;
   --fw: 400;
@@ -489,7 +490,7 @@ img:not(.not_html, .not) {
   // input statements //
   &.v-input--is-focused:not(.not_focus, .not_statement) .v-input__slot {--b: 1px solid rgba(255, 255, 255, 0.3)}
   &.error--text:not(.not_error, .not_statement) .v-input__slot {--b: 1px solid var(--error)}
-  &.v-input--is-disabled:not(.not_disabled, .not_statement) {opacity: .5; pointer-events: none}
+  &.v-input--is-disabled:not(.not_disabled, .not_statement) {opacity: var(--o-disabled); pointer-events: none}
 }
 
 
