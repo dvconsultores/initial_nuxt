@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/i18n": "^7.3.0",
     "core-js": "^3.19.3",
+    "html2canvas": "^1.4.1",
     "near-api-js": "^1.0.0",
     "nuxt": "^2.15.8",
     "parallax-js": "^3.1.0",
