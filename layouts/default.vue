@@ -3,7 +3,7 @@
     <Alerts ref="alerts"></Alerts>
     <Header ref="header" />
     <v-main :class="wrapperSpace?'with':'without'" class="parent">
-      <nuxt />
+      <nuxt-child />
     </v-main>
     <Footer ref="footer"></Footer>
   </v-app>
