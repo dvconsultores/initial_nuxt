@@ -5,10 +5,19 @@
   font-size: 16px;
   @include media(min, 2500px) {font-size: 19px !important}
   @include media(max, 1000px) {font-size: 14px !important}
-  transition: 0.4s ease-in-out;
-  animation: movedown .5s $ease-return;
-  height: var(--h-header) !important;
+  
   @include media(min, small) {margin-inline: 3em}
+  height: var(--h-header) !important;
+  animation: movedown .5s $ease-return;
+  transition: 0.4s ease-in-out;
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   inset: 0;
+  //   background: var(--clr-btn);
+  //   transition: 0.4s ease-in-out;
+  // }
+  // &.hide::before {opacity: 0}
   .v-toolbar__content {
     display: flex;
     justify-content: space-between;
