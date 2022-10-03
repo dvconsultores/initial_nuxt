@@ -108,19 +108,15 @@
 .margin0 {margin: 0}
 .margin1 {margin: .5em}
 .margin2 {margin: 1em}
-.marginaleft {margin-left: auto}
 .margin0left {margin-left: 0}
 .margin1left {margin-left: .5em}
 .margin2left {margin-left: 1em}
-.marginaright {margin-right: auto}
 .margin0right {margin-right: 0}
 .margin1righta {margin-right: .5em}
 .margin2righta {margin-right: 1em}
-.marginatop {margin-top: auto}
 .margin0top {margin-top: 0}
 .margin1top {margin-top: .5em}
 .margin2top {margin-top: 1em}
-.marginabottom {margin-bottom: auto}
 .margin0bottom {margin-bottom: 0}
 .margin1bottom {margin-bottom: .5em}
 .margin2bottom {margin-bottom: 1em}
@@ -266,7 +262,11 @@
   right: 0;
 }
 .align {margin-inline: auto !important}
-.alignblock {margin-block: auto !important}
+.alignl {margin-right: auto !important}
+.alignr {margin-left: auto !important}
+.justify {margin-block: auto !important}
+.justifyb {margin-top: auto !important}
+.justifyt {margin-bottom: auto !important}
 .rounded {border-radius: $border-btn}
 .order1 {order: 0}
 .order2 {order: 1}
@@ -412,19 +412,15 @@
   .margin0mobile {margin: 0 !important}
   .margin1mobile {margin: .5em !important}
   .margin2mobile {margin: 1em !important}
-  .marginaleftmobile {margin-left: auto !important}
   .margin0leftmobile {margin-left: 0 !important}
   .margin1leftmobile {margin-left: .5em !important}
   .margin2leftmobile {margin-left: 1em !important}
-  .marginarightmobile {margin-right: auto !important}
   .margin0rightmobile {margin-right: 0 !important}
   .margin1rightamobile {margin-right: .5em !important}
   .margin2rightamobile {margin-right: 1em !important}
-  .marginatopmobile {margin-top: auto !important}
   .margin0topmobile {margin-top: 0 !important}
   .margin1topmobile {margin-top: .5em !important}
   .margin2topmobile {margin-top: 1em !important}
-  .marginabottommobile {margin-bottom: auto !important}
   .margin0bottommobile {margin-bottom: 0 !important}
   .margin1bottommobile {margin-bottom: .5em !important}
   .margin2bottommobile {margin-bottom: 1em !important}
@@ -567,7 +563,11 @@
     right: 0 !important;
   }
   .alignmobile {margin-inline: auto !important}
-  .alignblockmobile {margin-block: auto !important}
+  .alignlmobile {margin-right: auto !important}
+  .alignrmobile {margin-left: auto !important}
+  .justifymobile {margin-block: auto !important}
+  .justifybmobile {margin-top: auto !important}
+  .justifytmobile {margin-bottom: auto !important}
   .roundedmobile {border-radius: $border-btn !important}
   .order1mobile {order: 0 !important}
   .order2mobile {order: 1 !important}
