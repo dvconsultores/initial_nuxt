@@ -25,8 +25,8 @@ export default {
     ],
     link: [
       // <-- main -->
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' },
-      { id: 'theme', as: 'style', rel: 'stylesheet', type: 'text/css', href: 'themes/light/theme.css', crossorigin: '' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { id: 'theme', as: 'style', rel: 'stylesheet', type: 'text/css', href: '/themes/light/theme.css', crossorigin: '' },
       // <-- icons-default -->
       { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
