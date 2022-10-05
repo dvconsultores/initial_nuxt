@@ -37,7 +37,7 @@
                 <v-list>
                   <!-- ciclo for items -->
                   <v-list-item-group active-class="activeText">
-                    <v-list-item v-for="(item2,i) in item.selection" :key="i" :ripple="false" :to="`${$i18n.locale}/${item2.to}`" @click="drawer = false">
+                    <v-list-item v-for="(item2,i) in item.selection" :key="i" :ripple="false" :to="localePath(item2.to)" @click="drawer = false">
                       <v-list-item-title class="center h10_em">
                         <span class="normal">{{ item2.name}}</span>
                       </v-list-item-title>
@@ -52,7 +52,7 @@
           <template v-if="dataDrawer.list">
             <v-list class="fill_w">
               <!-- ciclo for items -->
-              <v-list-item v-for="(item,i) in dataDrawer.list" :key="i" link :to="`${$i18n.locale}/${item.to}`" :ripple="false">
+              <v-list-item v-for="(item,i) in dataDrawer.list" :key="i" link :to="localePath(item.to)" :ripple="false">
                 <v-list-item-title class="conttitle acenter gap1 h10_em" @click="ActiveClass('list', item); drawer = false">
                     <img :src="require(`~/assets/sources/icons/${item.key}${item.active?'-active':''}.svg`)" class="icon" :alt="`${item.key} icon`" :class="{active: item.active}">
                     <span style="max-width: max-content">
@@ -87,7 +87,7 @@
             <v-list-item-title>MARKETPLACE</v-list-item-title>
           </v-list-item>
 
-          <v-list-item v-for="(item,i) in dataDrawer.expansion[0].selection" :key="i" :to="`${$i18n.locale}/${item.to}`">
+          <v-list-item v-for="(item,i) in dataDrawer.expansion[0].selection" :key="i" :to="localePath(item.to)">
             <v-list-item-title>{{item.name}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
@@ -100,7 +100,7 @@
         <v-list-item-group active-class="activeClass">
           <v-list-item
             v-for="(item,i) in dataMenuLogin" :key="i"
-            @click="item.key==='logout' ? $store.commit('signOut') : $router.push(`${$i18n.locale}/${key}`)">
+            @click="item.key==='logout' ? $store.commit('signOut') : $router.push(localePath(key))">
             <v-list-item-title>{{item.name}}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
