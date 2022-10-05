@@ -89,11 +89,16 @@ div.v-card::before {background: transparent !important}
   -ms-text-stroke: var(--stroke) var(--c);
   -o-text-stroke: var(--stroke) var(--c);
 }
+
 body {background: var(--bg-ap)}
 * {caret-color: var(--primary)}
 ::selection {
   background-color: #ff4081;
   color: var(--bg-ap);
+}
+:-webkit-autofill {
+  -webkit-text-fill-color: var(--primary);
+  box-shadow: 0 0 0px 1000px #000 inset;
 }
 .v-input__slot::before {background: var(--c)}
 .v-input:hover {
