@@ -102,7 +102,7 @@ body {background: var(--bg-ap)}
 }
 .v-input__slot::before {background: var(--c)}
 .v-input:hover {
-  .v-input__slot::before {border-color: var(--clr-inv);opacity: .4}
+  .v-input__slot::before {border-color: var(--clr-inv); opacity: .4}
 }
 /* // // elements-active // // */ 
 :is(.primary--text, button[type].primary--text) {
