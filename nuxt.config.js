@@ -65,12 +65,7 @@ export default {
     '~/plugins/apexchart.js',
     '~/plugins/google-maps.js',
     '~/plugins/vue-debounce.js',
-    '~/plugins/console-log.js',
-    '~/plugins/scroll-to.js',
-    '~/plugins/toKedabCase.js',
-    '~/plugins/toSnakeCase.js',
-    '~/plugins/alerts.js',
-    '~/plugins/setProperty.js',
+    '~/plugins/injects.js',
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
