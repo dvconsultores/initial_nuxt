@@ -10,7 +10,7 @@ export default ({app}, inject) => {
 
 
   // alerts =========================================================================================================//
-  const alerts = (key, {title, desc}) => {
+  const alerts = (key, {title, desc} = {}) => {
     if (key === "success" || key === "cancel") {
       app.router.app.$children.find(data=>data._name === '<DefaultLayout>').$refs.alerts.
         GenerateAlert(key, title, desc);
