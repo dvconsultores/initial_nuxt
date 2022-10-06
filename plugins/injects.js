@@ -86,11 +86,13 @@ export default ({app}, inject) => {
   // load-cursor =========================================================================================================//
   const loadCursorStart = (el) => {
     document.documentElement.style.cursor = "progress";
-    if (typeof el === 'string') {console.log("string"); document.querySelectorAll(el).forEach(e => {e.style.pointerEvents = "none"})}
-    else if (el instanceof NodeList) {console.log("array"); el.forEach(e => {e.style.pointerEvents = "none"})}
-    else if (el instanceof Node) {el.style.pointerEvents = "none"}
-    else {
-      console.error("You must use a node element or selector by string")
+    if (el) {
+      typeof el === 'string' ? document.querySelectorAll(el).forEach(e => {e.style.pointerEvents = "none"})
+      : el instanceof NodeList ? el.forEach(e => {e.style.pointerEvents = "none"})
+      : el instanceof Node ? el.style.pointerEvents = "none"
+      : console.error("You must use a node element or selector by string")
+    } else if (el === '' || el === undefined || el === null) {
+      console.error("You dont need pass value")
     }
   }
   // usage $loadCursorStart(element)
@@ -98,11 +100,13 @@ export default ({app}, inject) => {
 
   const loadCursorEnd = (el) => {
     document.documentElement.style.cursor = "initial";
-    if (typeof el === 'string') {document.querySelectorAll(el).forEach(e => {e.style.pointerEvents = "all"})}
-    else if (el instanceof NodeList) {el.forEach(e => {e.style.pointerEvents = "all"})}
-    else if (el instanceof Node) {el.style.pointerEvents = "all"}
-    else {
-      console.error("You must use a node element or selector by string")
+    if (el) {
+      typeof el === 'string' ? document.querySelectorAll(el).forEach(e => {e.style.pointerEvents = "all"})
+      : el instanceof NodeList ? el.forEach(e => {e.style.pointerEvents = "all"})
+      : el instanceof Node ? el.style.pointerEvents = "all"
+      : console.error("You must use a node element or selector by string")
+    } else if (el === '' || el === undefined || el === null) {
+      console.error("You dont need pass value")
     }
   }
   // usage $loadCursorEnd(element)
