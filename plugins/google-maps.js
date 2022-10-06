@@ -5,7 +5,7 @@ import Vue from 'vue'
 // google maps
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyB8dExdQtd6WILpKT57uF2boPp8VyCIufk',
+    key: '',
   },
 })
 // geolocation
