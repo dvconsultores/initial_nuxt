@@ -59,7 +59,7 @@ export const actions = {
       wallet = new WalletConnection(near);
       commit( "getData");
     } catch (error) {
-      this.$alert("cancel", null, error.message)
+      this.$alert("cancel", {desc: error.message})
     }
   },
 };
