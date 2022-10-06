@@ -10,9 +10,14 @@ export default ({app}, inject) => {
 
 
   // alerts =========================================================================================================//
-  const alerts = (key, title, desc) =>
-    app.router.app.$children[app.router.app.$children.findIndex(data=>data._name === '<DefaultLayout>')].$refs.alerts.
-      GenerateAlert(key, title, desc);
+  const alerts = (key, {title, desc}) => {
+    if (key === "success" || key === "cancel") {
+      app.router.app.$children.find(data=>data._name === '<DefaultLayout>').$refs.alerts.
+        GenerateAlert(key, title, desc);
+    } else {
+      console.error('Invalid key, try "success" or "cancel"')
+    }
+  }
   // usage $alert(key, title, desc)
   inject('alert', alerts);
 
@@ -64,7 +69,7 @@ export default ({app}, inject) => {
 
 
   // to-kedabcase =========================================================================================================//
-  const toKedabCase = (str) =>
+  const toKedabCase = str =>
     str && str
       .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
       .map(x => x.toLowerCase())
@@ -74,7 +79,7 @@ export default ({app}, inject) => {
 
 
   // to-snakecase =========================================================================================================//
-  const toSnakeCase = (str) =>
+  const toSnakeCase = str =>
   str && str
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map(x => x.toLowerCase())
