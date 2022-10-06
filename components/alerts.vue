@@ -39,7 +39,7 @@ export default {
       }
       this.dataAlerts.push(new Alert)
       // clear alerts
-      setTimeout(() => this.dataAlerts.splice(this.dataAlerts.shift(), 0), 5000);
+      setTimeout(() => this.dataAlerts.shift(), 5000);
     },
   }
 };
