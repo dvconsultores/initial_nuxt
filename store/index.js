@@ -41,7 +41,7 @@ export const mutations = {
   signOut(state) {
     wallet.signOut();
     state.dataUser.user = false;
-    this.$router.push(this.localePath({ path: '/' }));
+    this.$router.push(this.localePath('/'));
   },
 };
 
@@ -49,7 +49,7 @@ export const actions = {
   cambiarTheme({commit}, theme) {
     document.getElementById("theme").href = `/themes/${theme}/theme.css`;
     localStorage.setItem("theme", theme);
-    commit( "cambiarTheme", theme)
+    commit("cambiarTheme", theme)
   },
   async InicializeNear({commit}) {
     try {
@@ -60,6 +60,7 @@ export const actions = {
       commit( "getData");
     } catch (error) {
       this.$alert("cancel", {desc: error.message})
+      console.error(error.message);
     }
   },
 };
