@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     GenerateAlert(key, title = key, desc = `text${key.replace(/^\w/, c => c.toUpperCase())}`) {
-      // // construct alert
+      // // constructor alert
       function Alert() {
         this.key = key;
         this.title = title;
