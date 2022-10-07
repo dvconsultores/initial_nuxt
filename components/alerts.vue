@@ -3,7 +3,11 @@
     <v-snackbar
       v-for="(item,i) in dataAlerts" :key="i"
       v-model="item.model"
-      centered top
+      :centered="item.centered"
+      :top="item.top"
+      :bottom="item.bottom"
+      :left="item.left"
+      :right="item.right"
       transition="slide-Y-reverse-transition"
       :style="`--color-snackbar: ${item.color}`"
     >
@@ -26,18 +30,20 @@ export default {
     };
   },
   methods: {
-    GenerateAlert(key, title = key, desc = `text${key.replace(/^\w/, c => c.toUpperCase())}`) {
-      // // constructor alert
-      function Alert() {
-        this.key = key;
-        this.title = title;
-        this.desc = desc;
-        // this.icon = key === 'success' ? 'mdi-check-circle' : 'mdi-close-circle'; // --> if mdi icon
-        this.icon = key; // --> if img tag
-        this.color = key === 'success' ? '#A4FDDF' : 'rgb(200, 0, 0)';
-        this.model = true;
+    GenerateAlert(
+      key, title = key,
+      desc = `text${key.replace(/^\w/, c => c.toUpperCase())}`,
+      color = key === 'success' ? '#A4FDDF' : 'rgb(200, 0, 0)',
+      centered = true, top = true, bottom, left, right
+    ) {
+      // // create alert
+      const alert = {
+        key, title, desc, centered, top, bottom, left, right, color, model: true,
+        icon: key, // ---> if img tag
+        // icon: key === 'success' ? 'mdi-check-circle' : 'mdi-close-circle', // ---> if mdi icon
       }
-      this.dataAlerts.push(new Alert)
+      if (alert.bottom === true) {alert.top = false}
+      this.dataAlerts.push(alert)
       // clear alerts
       setTimeout(() => this.dataAlerts.shift(), 5000);
     },
