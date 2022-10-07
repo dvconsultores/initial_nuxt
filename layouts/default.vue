@@ -23,13 +23,21 @@ export default {
     this.$store.dispatch("InicializeNear");
     
     /* scroll horizontal (simple) */
-    const scrollable = document.querySelectorAll('[class*="scrollx"]');
-    scrollable.forEach((el) => {
-      el.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        el.scrollLeft += e.deltaY
-      })
-    });
+    const scrollableDesktop = document.querySelectorAll('.scrollx');
+    const scrollableMobile = document.querySelectorAll('.scrollxmobile');
+    function scrollX(node) {
+      node.forEach(el =>
+        el.addEventListener("wheel", e => {
+          if (node === scrollableDesktop) {
+            e.preventDefault(); el.scrollLeft += e.deltaY
+          } else if (node === scrollableMobile && window.innerWidth <= 880) {
+            e.preventDefault(); el.scrollLeft += e.deltaY
+          }
+        })
+      );
+    }
+    scrollX(scrollableDesktop);
+    scrollX(scrollableMobile);
     
     /* footer height listener */
     const footerHeightListener = () => {
