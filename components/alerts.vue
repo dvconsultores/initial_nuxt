@@ -42,7 +42,7 @@ export default {
         icon: key, // ---> if img tag
         // icon: key === 'success' ? 'mdi-check-circle' : 'mdi-close-circle', // ---> if mdi icon
       }
-      if (alert.bottom === true) {alert.top = false}
+      if (alert.bottom) {alert.top = false}
       this.dataAlerts.push(alert)
       // clear alerts
       setTimeout(() => this.dataAlerts.shift(), 5000);
