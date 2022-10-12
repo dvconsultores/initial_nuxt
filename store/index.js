@@ -57,7 +57,7 @@ export const actions = {
       const near = await connect(config);
       // create wallet connection
       wallet = new WalletConnection(near);
-
+      
       if (consult) {
         return wallet.getAccountId();
       } else {
