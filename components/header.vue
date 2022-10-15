@@ -82,12 +82,11 @@ export default {
   //   const theme = localStorage.getItem("theme");
   //   if (theme) {
   //     setTimeout(() => {
-  //       this.$store.dispatch("switchTheme", theme);
-  //       this.$store.commit('OverlayMethod', theme)
+  //       this.$store.commit("switchTheme", theme);
   //     }, 100);
   //   }
   //   if (theme === "light") {this.themeButton = true}
-  //   if (theme === "dark") {this.themeButton = false}
+  //   else {this.themeButton = false}
   // },
   methods: {
     activeSidebarIcons(item) {
@@ -108,7 +107,7 @@ export default {
       }
     },
     // changeTheme(theme) {
-    //   this.$store.dispatch("switchTheme", theme);
+    //   this.$store.commit("switchTheme", theme);
     //   this.themeButton = !this.themeButton;
     // },
   },

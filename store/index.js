@@ -24,10 +24,14 @@ export const state = () => ({
 });
 
 export const mutations = {
-  switchTheme(state, theme) {state.theme = theme},
-  overlayMethod(state, theme) {
-    if (theme === "dark") {state.overlay.opacity = "0.5"; state.overlay.color = "black"}
-    if (theme === "light") {state.overlay.opacity = "0.2"; state.overlay.color = "white"}
+  switchTheme(state, theme) {
+    // theme
+    state.theme = theme
+    localStorage.setItem("theme", theme)
+    document.documentElement.className = theme;
+    // overlay
+    if (theme === "light") { state.overlay.opacity = 0.2; state.overlay.color = "white" }
+    else { state.overlay.opacity = 0.5; state.overlay.color = "black" }
   },
   setData(state, data) {
     if (wallet.isSignedIn() && typeof data === 'string') {
@@ -53,11 +57,6 @@ export const mutations = {
 };
 
 export const actions = {
-  switchTheme({commit}, theme) {
-    document.getElementById("theme").href = `/themes/${theme}/theme.css`;
-    localStorage.setItem("theme", theme);
-    commit("switchTheme", theme)
-  },
   async getData({commit}, {fetch, get} = {}) {
     try {
       // connect to NEAR
