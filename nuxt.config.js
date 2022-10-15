@@ -26,7 +26,7 @@ export default {
     ],
     link: [
       // <-- main -->
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' },
       // <-- icons-default -->
       { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
