@@ -75,7 +75,7 @@ export const actions = {
       }
     } catch (error) {
       this.$alert("cancel", {desc: error.message})
-      console.error(error.message);
+      console.error(error);
     }
   },
 };

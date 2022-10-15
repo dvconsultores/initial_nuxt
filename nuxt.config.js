@@ -45,7 +45,7 @@ export default {
   },
 
   loading: {
-    color: 'var(--clr-gradient)',
+    color: 'var(--clr-primary)',
     height: '1em',
   },
 
