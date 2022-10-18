@@ -19,8 +19,8 @@ export default {
     }
   },
   created() {
-    // this.getData();  // if use smart contract + backend
-    this.$store.dispatch("getData"); // if use only smart contract
+    // get data profile
+    this.$store.dispatch("getData");
   },
   mounted() {
     /* scroll horizontal (simple) */
@@ -53,19 +53,6 @@ export default {
     window.onresize = () => footerHeightListener();
   },
   methods: {
-    // async getData() {
-    //   const baseUrl = this.$axios.defaults.baseURL;
-    //   const accountId = await this.$store.dispatch("getData", {get: "wallet"})
-    //   // get data user
-    //   await this.$axios.post(`${baseUrl}api/v1/get-perfil-data/`, { "wallet": accountId })
-    //   .then(fetch => {
-    //     this.$store.dispatch("getData", {fetch});
-    //   })
-    //   .catch(error => {
-    //     this.$alert("cancel", {desc: error.message})
-    //     console.error(error);
-    //   })
-    // }
   },
 }
 </script>
