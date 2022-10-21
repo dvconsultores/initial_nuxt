@@ -58,28 +58,28 @@ export const mutations = {
       .filter(arr =>
         arr[0] === 'telegram' && arr[1] || arr[0] === 'discord' && arr[1]
         || arr[0] === 'instagram' && arr[1] || arr[0] === 'twitter' && arr[1])
-      // set socials accounts
-      arrSocials.forEach(arr => { state.dataUser[arr[0]] = arr[1] })
-      // transform in object to push
-      const socials = Object.fromEntries(arrSocials)
-      Object.entries(socials).forEach(arr => {
-        if (arr[0] === "telegram") {
+      // set data socials
+      arrSocials.forEach(arr => {
+        let [keys, values] = arr
+        state.dataUser[keys] = values
+
+        if (keys === "telegram") {
           // telegram
-          arr[1] = `https://t.me/${socials.telegram}`
-        } else if (arr[0] === "discord") {
+          values = `https://t.me/${values}`
+        } else if (keys === "discord") {
           // discord
-          arr[1] = `https://discord.com/channels/${socials.discord}`
-        } else if (arr[0] === "instagram") {
+          values = `https://discord.com/channels/${values}`
+        } else if (keys === "instagram") {
           // instagram
-          arr[0] = 'mdi-instagram'
-          arr[1] = `https://instagram.com/${socials.instagram}`
-        } else if (arr[0] === "twitter") {
+          keys = 'mdi-instagram'
+          values = `https://instagram.com/${values}`
+        } else if (keys === "twitter") {
           // twitter
-          arr[0] = 'mdi-twitter'
-          arr[1] = `https://twitter.com/${socials.twitter}`
+          keys = 'mdi-twitter'
+          values = `https://twitter.com/${values}`
         }
         // push data socials
-        state.dataUser.dataSocial.push({ icon: arr[0], link: arr[1] })
+        state.dataUser.dataSocial.push({ icon: keys, link: values })
       })
       state.dataUser.user = true;
     };
