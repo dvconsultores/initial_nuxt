@@ -336,6 +336,19 @@
 .reverse {transform: rotate(180deg)}
 .isolate {isolation: isolate}
 .pointer {cursor: pointer}
+.ellipsis_text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ellipsis_box {
+  --lines: initial;
+
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 
 
@@ -637,6 +650,19 @@
   .reversemobile {transform: rotate(180deg) !important}
   .isolatemobile {isolation: isolate !important}
   .pointermobile {cursor: pointer !important}
+  .ellipsis_textmobile {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  .ellipsis_boxmobile {
+    --lines: initial;
+  
+    display: -webkit-box !important;
+    -webkit-line-clamp: var(--lines) !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
 }
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
