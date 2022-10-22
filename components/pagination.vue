@@ -124,6 +124,7 @@ export default {
 
 <style src="~/assets/styles/components/pagination.scss" lang="scss" />
 /*
+
 ⭐  how to use  ⭐
 ----------template----------
 <pagination
@@ -147,4 +148,11 @@ computed: {
     return Math.ceil(this.dataItems.length / this.items_per_page)
   }
 },
+
+⭕ vuetify component version ⭕
+<v-pagination
+  v-model="current_page"
+  :length="pagination_per_page"
+></v-pagination>
+
 */
