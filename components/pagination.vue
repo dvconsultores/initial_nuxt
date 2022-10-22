@@ -55,7 +55,6 @@ export default {
     perPage: {
       type: Number,
       default: 3,
-      required: true
     },
     currentPage: {
       type: Number,
