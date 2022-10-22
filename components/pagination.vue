@@ -89,7 +89,6 @@ export default {
           isDisabled: i === this.currentPage
         });
       }
-      // console.log(this.perPage, this.totalPages)
 
       return range;
     },
