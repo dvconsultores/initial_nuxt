@@ -122,7 +122,7 @@
 .margin2bottom {margin-bottom: 1em}
 .contents {display: contents}
 .grid {
-  --gtc: initial;--gtr: initial;--gc: initial;--gr: initial;--pc: initial;--pi: initial;--gaf: initial;--gac: initial;--gar: initial;--max-width-child: none;--max-width-only: none;
+  --gtc: initial;--gtr: initial;--gc: initial;--gr: initial;--pc: initial;--pi: initial;--gaf: initial;--gac: initial;--gar: initial;--max-w-child: none;--max-w-only: none;
   display: grid;
   grid-template-columns: var(--gtc);
   grid-template-rows: var(--gtr);
@@ -439,7 +439,7 @@
   .margin2bottommobile {margin-bottom: 1em !important}
   .contentsmobile {display: contents !important}
   .gridmobile {
-    --gtc: initial;--gtr: initial;--gc: initial;--gr: initial;--pc: initial;--pi: initial;--max-width-child: none;--max-width-only: none;
+    --gtc: initial;--gtr: initial;--gc: initial;--gr: initial;--pc: initial;--pi: initial;--max-w-child: none;--max-w-only: none;
     display: grid !important;
     grid-template-columns: var(--gtc) !important;
     grid-template-rows: var(--gtr) !important;
