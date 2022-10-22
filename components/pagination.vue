@@ -127,31 +127,31 @@ export default {
 
 ⭐  how to use  ⭐
 ----------template----------
-<pagination
+<Pagination
   :total-pages="pagination_per_page"
   :per-page="pagination_per_page"
-  :current-page="current_page"
-  @pagechanged="(page) => current_page = page"
+  :current-page="currentPage"
+  @pagechanged="(page) => currentPage = page"
 />
 ----------script----------
 data() {
   return {
-    current_page: 1,
-    items_per_page: 10,
+    currentPage: 1,
+    itemsPerPage: 10,
   }
 },
 computed: {
   dataItems_pagination() {
-    return this.dataItems.slice((this.current_page - 1) * this.items_per_page, this.current_page * this.items_per_page)
+    return this.dataItems.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage)
   },
   pagination_per_page() {
-    return Math.ceil(this.dataItems.length / this.items_per_page)
+    return Math.ceil(this.dataItems.length / this.itemsPerPage)
   }
 },
 
 ⭕ vuetify component version ⭕
 <v-pagination
-  v-model="current_page"
+  v-model="currentPage"
   :length="pagination_per_page"
 ></v-pagination>
 

@@ -120,7 +120,7 @@
 .margin0bottom {margin-bottom: 0}
 .margin1bottom {margin-bottom: .5em}
 .margin2bottom {margin-bottom: 1em}
-.contents {display: contents}
+.contents {display: contents !important}
 .grid {
   --gtc: initial;--gtr: initial;--gc: initial;--gr: initial;--pc: initial;--pi: initial;--gaf: initial;--gac: initial;--gar: initial;--max-w-child: none;--max-w-only: none;
   display: grid;
