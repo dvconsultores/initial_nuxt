@@ -1,11 +1,5 @@
 <template>
   <v-btn-toggle class="pagination align" background-color="rgba(0, 0, 0, .4)">
-    <!-- <button
-      :disabled="isInFirstPage"
-      @click="onClickFirstPage"
-    >
-      First
-    </button> -->
     <button
       :style="isInFirstPage ? 'opacity: .5' : 'opacity: 1'"
       :disabled="isInFirstPage"
@@ -14,17 +8,32 @@
       <v-icon size="2em" class="reverse">mdi-play</v-icon>
     </button>
     
-    <!-- Visible Buttons Start -->
     <v-btn
-      v-for="(page, i) in pages" :key="i" text
-      :disabled="page.isDisabled"
-      :class="{ active: isPageActive(page.name) }"
-      @click="onClickPage(page.name)"
-    >
-      {{ page.name }}
-    </v-btn>
+      :disabled="isInFirstPage" text
+      :class="{ active: isInFirstPage }"
+      @click="onClickFirstPage"
+    >1</v-btn>
+
+    <!-- Visible Buttons Start -->
+    <template v-for="(page, i) in pages">
+      <v-btn
+        v-if="page.name !== 1 && page.name !== totalPages" :key="i"
+        :disabled="page.isDisabled" text
+        :class="{ active: isPageActive(page.name) }"
+        @click="onClickPage(page.name)"
+      >
+        {{page.name}}
+      </v-btn>
+    </template>
     <!-- Visible Buttons End -->
 
+    <v-btn
+      v-if="totalPages > 1"
+      :disabled="isInLastPage" text
+      :class="{ active: isInLastPage }"
+      @click="onClickLastPage"
+    >{{totalPages}}</v-btn>
+    
     <button
       :style="isInLastPage ? 'opacity: .5' : 'opacity: 1'"
       :disabled="isInLastPage"
@@ -32,12 +41,6 @@
     >
       <v-icon size="2em">mdi-play</v-icon>
     </button>
-    <!-- <button
-      :disabled="isInLastPage"
-      @click="onClickLastPage"
-    >
-      Last
-    </button> -->
   </v-btn-toggle>
 </template>
 
@@ -47,12 +50,11 @@ export default {
   props: {
     totalPages: {
       type: Number,
-      default: 10,
       required: true
     },
     perPage: {
       type: Number,
-      default: 10,
+      default: 3,
       required: true
     },
     currentPage: {
@@ -129,7 +131,6 @@ export default {
 ----------template----------
 <Pagination
   :total-pages="pagination_per_page"
-  :per-page="pagination_per_page"
   :current-page="currentPage"
   @pagechanged="(page) => currentPage = page"
 />
