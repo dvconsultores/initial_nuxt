@@ -59,10 +59,11 @@ export const mutations = {
         arr[0] === 'telegram' && arr[1] || arr[0] === 'discord' && arr[1]
         || arr[0] === 'instagram' && arr[1] || arr[0] === 'twitter' && arr[1])
       // set data socials
-      arrSocials.forEach(arr => {
-        let [keys, values] = arr
+      for (let [keys, values] of arrSocials) {
+        // properties <--
         state.dataUser[keys] = values
-
+        
+        // icons <--
         if (keys === "telegram") {
           // telegram
           values = `https://t.me/${values}`
@@ -80,7 +81,7 @@ export const mutations = {
         }
         // push data socials
         state.dataUser.dataSocial.push({ icon: keys, link: values })
-      })
+      }
       state.dataUser.user = true;
     };
   },
