@@ -54,10 +54,10 @@ export const mutations = {
       state.dataUser.email = data.email;
       state.dataUser.bio = data.bio;
       // find socials
-      const [...arrSocials] = Object.entries(data)
-      .filter(arr =>
+      const arrSocials = Object.entries(data).filter(arr =>
         arr[0] === 'telegram' && arr[1] || arr[0] === 'discord' && arr[1]
-        || arr[0] === 'instagram' && arr[1] || arr[0] === 'twitter' && arr[1])
+        || arr[0] === 'instagram' && arr[1] || arr[0] === 'twitter' && arr[1]
+      )
       // set data socials
       for (let [keys, values] of arrSocials) {
         // properties <--
@@ -87,7 +87,7 @@ export const mutations = {
   },
   signIn() {
     wallet.requestSignIn(
-      'contract.nearbase.testnet'
+      'contract.globaldv.testnet'
     );
   },
   signOut(state) {
