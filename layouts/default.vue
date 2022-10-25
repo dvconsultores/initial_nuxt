@@ -40,19 +40,22 @@ export default {
     scrollX(scrollableDesktop);
     scrollX(scrollableMobile);
     
-    /* footer height listener */
-    const footerHeightListener = () => {
+    // resize listener
+    window.addEventListener("resize", () => this.footerHeightListener());
+    this.footerHeightListener();
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", () => this.footerHeightListener());
+  },
+  methods: {
+    footerHeightListener() {
       const footer = document.querySelector('#footer');
       setTimeout(() => {
         document.documentElement.style.setProperty(
           '--h-footer', `${footer.getBoundingClientRect().height}px`
         );
-      }, 100);
+      }, 400);
     }
-    footerHeightListener();
-    window.onresize = () => footerHeightListener();
-  },
-  methods: {
   },
 }
 </script>
