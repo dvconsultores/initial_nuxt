@@ -23,39 +23,40 @@ export default {
     this.$store.dispatch("getData");
   },
   mounted() {
-    /* scroll horizontal (simple) */
-    const scrollableDesktop = document.querySelectorAll('.scrollx');
-    const scrollableMobile = document.querySelectorAll('.scrollxmobile');
-    function scrollX(node) {
-      node.forEach(el =>
-        el.addEventListener("wheel", e => {
-          if (node === scrollableDesktop) {
-            e.preventDefault(); el.scrollLeft += e.deltaY
-          } else if (node === scrollableMobile && window.innerWidth <= 880) {
-            e.preventDefault(); el.scrollLeft += e.deltaY
-          }
-        })
-      );
-    }
-    scrollX(scrollableDesktop);
-    scrollX(scrollableMobile);
+    this.scrollX();
+    this.footerHeightListener();
     
     // resize listener
-    window.addEventListener("resize", () => this.footerHeightListener());
-    this.footerHeightListener();
+    window.addEventListener("resize", this.footerHeightListener);
   },
   beforeDestroy() {
-    window.removeEventListener("resize", () => this.footerHeightListener());
+    window.removeEventListener("resize", this.footerHeightListener);
   },
   methods: {
+    scrollX() {
+      const scrollableDesktop = document.querySelectorAll('.scrollx');
+      const scrollableMobile = document.querySelectorAll('.scrollxmobile');
+      if (scrollableDesktop) {
+        for (const el of scrollableDesktop) {
+          el.addEventListener("wheel", event => { event.preventDefault(); el.scrollLeft += event.deltaY })
+        }
+      }
+      if (scrollableMobile) {
+        for (const el of scrollableMobile) {
+          el.addEventListener("wheel", event => {
+            if (window.innerWidth <= 880) { event.preventDefault(); el.scrollLeft += event.deltaY }
+          })
+        }
+      }
+    },
     footerHeightListener() {
-      const footer = document.querySelector('#footer');
       setTimeout(() => {
+        const footer = document.querySelector('#footer');
         document.documentElement.style.setProperty(
           '--h-footer', `${footer.getBoundingClientRect().height}px`
         );
       }, 400);
-    }
+    },
   },
 }
 </script>
