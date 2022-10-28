@@ -15,7 +15,7 @@ export default ({app}, inject) => {
       app.router.app.$children.find(data=>data.$el === document.getElementById("layout")).$refs.alerts.
         GenerateAlert(key, title, desc, color, centered, top, bottom, left, right);
     } else {
-      console.error('Invalid key, try "success" or "cancel"')
+      throw new Error('Invalid key, try "success" or "cancel"')
     }
   }
   // usage $alert(key, title, desc)
@@ -37,57 +37,6 @@ export default ({app}, inject) => {
   inject('scrollTo', scrollTo);
 
 
-  // set-properties =========================================================================================================//
-  const setProperties = (item, ...arr) => {
-    if (item.currentTarget) {
-      arr.forEach(e => {
-        const keys = Object.keys(e);
-        const values = Object.values(e);
-        item.currentTarget.style.setProperty(`--${keys}`, values)
-      });
-    } else if (item instanceof Node) {
-      arr.forEach(e => {
-        const keys = Object.keys(e);
-        const values = Object.values(e);
-        item.style.setProperty(`--${keys}`, values)
-      });
-    } else if (item instanceof NodeList) {
-      arr.forEach(e => {
-        const keys = Object.keys(e);
-        const values = Object.values(e);
-        item.forEach(e => {e.style.setProperty(`--${keys}`, values)})
-      });
-    }
-    else {
-      console.error("You must use event or node element to selector parameter");
-    }
-  }
-  // $setProperty($event, {bg: 'green' }, {c: 'black'})
-  // or
-  // $setProperty($refs.element.$el, {bg: 'green' }, {c: 'black'})
-  inject('setProperty', setProperties);
-
-
-  // to-kedabcase =========================================================================================================//
-  const toKedabCase = str =>
-    str && str
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-      .map(x => x.toLowerCase())
-      .join('-');
-  // usage $toKedabCase(string)
-  inject('toKedabCase', toKedabCase);
-
-
-  // to-snakecase =========================================================================================================//
-  const toSnakeCase = str =>
-  str && str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.toLowerCase())
-    .join('_');
-  // usage $toSnakeCase(string)
-  inject('toSnakeCase', toSnakeCase);
-
-
   // load-cursor =========================================================================================================//
   const loadCursorStart = (el) => {
     document.documentElement.style.cursor = "progress";
@@ -97,7 +46,7 @@ export default ({app}, inject) => {
       : el instanceof Node ? el.style.pointerEvents = "none"
       : console.error("You must use a node element or selector by string")
     } else if (el === '' || el === undefined || el === null) {
-      console.error("You dont need pass value")
+      throw new Error("You dont need pass value")
     }
   }
   // usage $loadCursorStart(element)
@@ -111,7 +60,7 @@ export default ({app}, inject) => {
       : el instanceof Node ? el.style.pointerEvents = "all"
       : console.error("You must use a node element or selector by string")
     } else if (el === '' || el === undefined || el === null) {
-      console.error("You dont need pass value")
+      throw new Error("You dont need pass value")
     }
   }
   // usage $loadCursorEnd(element)

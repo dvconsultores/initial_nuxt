@@ -64,6 +64,7 @@ export default {
     '~/plugins/google-maps.js',
     '~/plugins/vue-debounce.js',
     '~/plugins/injects.js',
+    '~/plugins/polyfills.js',
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
