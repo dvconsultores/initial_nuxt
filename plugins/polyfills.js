@@ -33,4 +33,14 @@ export default () => {
     }
   }
   // string.toSnakeCase() <-- example
+
+
+  // limitString =========================================================================================================//
+  if (!String.prototype.limitString) {
+    String.prototype.limitString = function(limit) {
+      if (this.length > limit) return `${this.substring(0, limit)}...`
+      return this
+    }
+  }
+  // string.limitString(limit) <-- example
 }
