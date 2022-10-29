@@ -23,7 +23,7 @@ export default ({app}, inject) => {
 
 
   // scroll-to =========================================================================================================//
-  const scrollTo = (id) => {
+  const scrollTo = id => {
     if (id === 'top' || id === 'home' || id === '/' || id === '#' || id === '') {
       setTimeout(()=> {
         window.scrollTo(0, 1);
@@ -38,31 +38,17 @@ export default ({app}, inject) => {
 
 
   // load-cursor =========================================================================================================//
-  const loadCursorStart = (el) => {
-    document.documentElement.style.cursor = "progress";
-    if (el) {
-      typeof el === 'string' ? document.querySelectorAll(el).forEach(e => {e.style.pointerEvents = "none"})
-      : el instanceof NodeList ? el.forEach(e => {e.style.pointerEvents = "none"})
-      : el instanceof Node ? el.style.pointerEvents = "none"
-      : console.error("You must use a node element or selector by string")
-    } else if (el === '' || el === undefined || el === null) {
-      throw new Error("You dont need pass value")
+  const loadCursor = key => {
+    if (key === true) {
+      document.documentElement.style.cursor = "progress";
+      document.documentElement.style.pointerEvents = "none";
+    } else if (key === false) {
+      document.documentElement.style.cursor = "initial";
+      document.documentElement.style.pointerEvents = "all";
+    } else {
+      throw new Error("You must to pass Boolean")
     }
   }
-  // usage $loadCursorStart(element)
-  inject('loadCursorStart', loadCursorStart);
-
-  const loadCursorEnd = (el) => {
-    document.documentElement.style.cursor = "initial";
-    if (el) {
-      typeof el === 'string' ? document.querySelectorAll(el).forEach(e => {e.style.pointerEvents = "all"})
-      : el instanceof NodeList ? el.forEach(e => {e.style.pointerEvents = "all"})
-      : el instanceof Node ? el.style.pointerEvents = "all"
-      : console.error("You must use a node element or selector by string")
-    } else if (el === '' || el === undefined || el === null) {
-      throw new Error("You dont need pass value")
-    }
-  }
-  // usage $loadCursorEnd(element)
-  inject('loadCursorEnd', loadCursorEnd);
+  // usage $loadCursor(boolean)
+  inject('loadCursor', loadCursor);
 }
