@@ -17,7 +17,7 @@ export const state = () => ({
   overlay: { opacity: 0.2, color: "black" },
   dataUser: {
     banner: undefined,
-    avatar: require('~/assets/sources/images/avatar.png'),
+    avatar: undefined,
     accountId: undefined,
     username: undefined,
     email: undefined,
@@ -44,6 +44,7 @@ export const mutations = {
   },
   setData(state, data) {
     if (wallet.isSignedIn() && typeof data === 'string') {
+      state.dataUser.avatar = require('~/assets/sources/images/avatar.png');
       state.dataUser.accountId = data;
       state.dataUser.user = true;
     } else if (wallet.isSignedIn() && typeof data === 'object') {
