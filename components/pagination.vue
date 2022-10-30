@@ -15,16 +15,14 @@
     >1</v-btn>
 
     <!-- Visible Buttons Start -->
-    <template v-for="(page, i) in pages">
-      <v-btn
-        v-if="page.name !== 1 && page.name !== totalPages" :key="i"
-        :disabled="page.isDisabled" text
-        :class="{ active: isPageActive(page.name) }"
-        @click="onClickPage(page.name)"
-      >
-        {{page.name}}
-      </v-btn>
-    </template>
+    <v-btn
+      v-for="(page, i) in pages.slice(1, totalPages - 1)" :key="i"
+      :disabled="page.isDisabled" text
+      :class="{ active: isPageActive(page.name) }"
+      @click="onClickPage(page.name)"
+    >
+      {{page.name}}
+    </v-btn>
     <!-- Visible Buttons End -->
 
     <v-btn
