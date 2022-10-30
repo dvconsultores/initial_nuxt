@@ -1,7 +1,7 @@
 <template>
   <section class="container-filters fwrap gap2" style="--fb: 200px" :class="{contents: contents}">
     <v-text-field
-      v-if="!hide.includes('search')"
+      v-if="!hide.includes(1)"
       v-model="search_model"
       hide-details solo
       append-icon="mdi-magnify"
@@ -12,7 +12,7 @@
     ></v-text-field>
 
     <v-select
-      v-if="!hide.includes('filterA')"
+      v-if="!hide.includes(2)"
       v-model="filterA_model"
       :items="filterA"
       hide-details solo
@@ -47,7 +47,7 @@
     </v-select>
 
     <v-select
-      v-if="!hide.includes('filterB')"
+      v-if="!hide.includes(3)"
       v-model="filterB_model"
       :items="filterB"
       hide-details solo

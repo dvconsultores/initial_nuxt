@@ -65,6 +65,7 @@ export default {
     '~/plugins/vue-debounce.js',
     '~/plugins/injects.js',
     '~/plugins/polyfills.js',
+    '~/plugins/directives.js',
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

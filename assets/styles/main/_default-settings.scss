@@ -318,15 +318,11 @@ img:not(.not_html, .not) {
   .v-skeleton-loader {
     width: 100%;
     height: 100%;
-  }
-}
-
-//- skeleton loader -//
-.v-skeleton-loader:not(.not_vuetify, .not) {
-  .v-skeleton-loader__card .v-skeleton-loader__card-heading {display: none !important}
-  > *, > * > * {
-    width: 100%;
-    height: 100%;
+    .v-skeleton-loader__card .v-skeleton-loader__card-heading {display: none !important}
+    > *, > * > * {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
