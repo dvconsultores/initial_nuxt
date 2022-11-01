@@ -51,4 +51,39 @@ export default ({app}, inject) => {
   }
   // usage $loadCursor(boolean)
   inject('loadCursor', loadCursor);
+
+
+  // equalData =========================================================================================================//
+  const equalData = (toData, fromData) => {
+    for (const [keys, values] of Object.entries(toData)) {
+      const dataValues = fromData[keys]
+      if (typeof dataValues === "object") { Object.keys(values).forEach(key => { values[key] = dataValues[key] }) }
+      else { toData[keys] = dataValues }
+    }
+    return toData
+  }
+  // usage $equalData(to, from)
+  inject('equalData', equalData);
+
+
+  // equalData =========================================================================================================//
+  const formData = (form) => {
+    const formData = new FormData();
+    for (const [keys, values] of Object.entries(form)) {
+      // set empty string in null 
+      if (form[keys] && typeof form[keys] === "object") {
+        Object.keys(values).forEach(key => { values[key] ??= "" })
+      } else { form[keys] ??= "" }
+      
+      // push to form data
+      const excludeUrl = !(/\.(gif|jpg|jpeg|tiff|png)$/i).test(values)
+      const file = values?.type
+      if (typeof values === 'object' && !file) { formData.append(keys, JSON.stringify(values).toLowerCase()) } // if object only
+      else if (file) { formData.append(keys, values) } // if file object
+      else if (excludeUrl) { formData.append(keys, typeof values === 'string' ? values.toLowerCase() : values || "") } // else
+    }
+    return formData
+  }
+  // usage $formData(form)
+  inject('formData', formData);
 }
