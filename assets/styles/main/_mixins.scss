@@ -300,6 +300,22 @@ $breakpoints: (
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 
 
+//- parent -//
+@mixin parent() {
+  max-width: var(--parent) !important;
+  width: 100%;
+  margin-inline: auto;
+}
+
+
+//- subparent -//
+@mixin subparent() {
+  max-width: var(--subparent) !important;
+  width: 100%;
+  margin-inline: auto;
+}
+
+
 //- buttons -//
 @mixin btn() {
   --bg: var(--primary);
