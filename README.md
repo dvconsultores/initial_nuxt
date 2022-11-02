@@ -1,4 +1,4 @@
-# detextre4-nuxt3
+# detextre4-nuxt2
 
 ## Build Setup
 
