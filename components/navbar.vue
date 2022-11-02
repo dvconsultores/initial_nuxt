@@ -3,10 +3,10 @@
     <MenuNavbar ref="menu"></MenuNavbar>
     <v-app-bar id="navbar" color="transparent" fixed class="isolate font2">
       <nuxt-link to="/">
-        <img src="~/assets/sources/logos/logo.svg" alt="logo">
+        <img src="~/assets/sources/logos/logo.svg" alt="logo" style="--w: clamp(10em, 13vw, 13.414375em)">
       </nuxt-link>
 
-      <aside class="middle tcap">
+      <aside class="middle tcap deletemobile">
         <a
           v-for="(item, i) in dataNavbar" :key="i"
           :class="{active: item.active}"
