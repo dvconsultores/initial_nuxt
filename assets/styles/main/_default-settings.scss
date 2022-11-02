@@ -7,8 +7,7 @@
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 @font-face {
   font-family: 'Lekton';
-  src: local('Lektom'),
-      url(~/static/fonts/Lekton-400.ttf) format('truetype'),
+  src: url(~/static/fonts/Lekton-400.ttf) format('truetype'),
       url(~/static/fonts/Lekton-Bold.ttf) format('truetype'),
       url(~/static/fonts/Lekton-Italic.ttf) format('truetype'),
       url(~/static/fonts/Lekton-Regular.ttf) format('truetype');
