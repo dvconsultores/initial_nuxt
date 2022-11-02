@@ -35,7 +35,7 @@
       </v-btn>
 
       <section class="acenter gap2">
-        <template v-if="!user.user">
+        <template v-if="!user.logged">
           <v-btn class="btn eliminarmobile" @click="$store.commit('signIn')">LOG IN WITH NEAR</v-btn>
           <v-btn icon @click="$store.commit('signIn')">
             <img :src="require(`~/assets/sources/icons/account.svg`)" alt="account" class="eliminarmobile aspect" style="--w:3em">
@@ -44,13 +44,13 @@
         </template>
 
         <!-- console.log('abrir-menu-perfil') -->
-        <div v-show="user.user" class="openMenuLogin acenter" style="cursor:pointer;border-radius:4vmax">
+        <div v-show="user.logged" class="openMenuLogin acenter" style="cursor:pointer;border-radius:4vmax">
           <v-btn v-if="user.avatar" icon>
             <img :src="user.avatar" alt="account" class="eliminarmobile aspect" style="--w:3em;--br:50%;--b:2px solid var(--clr);--p:4px">
             <img :src="user.avatar" alt="account" class="vermobile aspect" style="--w:3em;--br:50%;--b:2px solid var(--clr);--p:4px">
           </v-btn>
           <v-skeleton-loader v-else type="avatar" />
-          <v-icon v-show="user.user">mdi-menu-down</v-icon>
+          <v-icon v-show="user.logged">mdi-menu-down</v-icon>
         </div>
       </section>
     </v-app-bar>
