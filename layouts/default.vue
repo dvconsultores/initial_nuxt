@@ -1,7 +1,7 @@
 <template>
   <v-app id="layout" class="relative">
     <Alerts ref="alerts"></Alerts>
-    <Header ref="header" />
+    <Navbar ref="navbar" />
     <v-main :class="wrapperSpace?'with':'without'" class="parent">
       <nuxt-child />
     </v-main>

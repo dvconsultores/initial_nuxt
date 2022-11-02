@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="divcol" style="font-size: 16px; gap:4em">
+  <div id="home" class="divcol" style="gap:4em">
     <SectionsHero ref="hero"></SectionsHero>
   </div>
 </template>

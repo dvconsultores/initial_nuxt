@@ -1,5 +1,5 @@
 <template>
-  <div id="menuHeader">
+  <div id="menuNeader">
     <!--////////////// drawers //////////////-->
     <!-- toggle drawer -->
     <v-navigation-drawer
@@ -11,7 +11,7 @@
       :overlay-color="$store.state.overlay.color"
       class="font2"
     >
-      <section class="v-navigation-drawer__content--header divcol center gap2">
+      <section class="v-navigation-drawer__content--navbar divcol center gap2">
         <v-btn icon class="close" style="--top: 8px; --right: 10px" @click="drawer=false">
           <img src="~/assets/sources/icons/close.svg" alt="close" style="--w:2.375em">
         </v-btn>
@@ -79,23 +79,8 @@
 
 
     <!--////////////// menues //////////////-->
-    <!-- menu market -->
-    <v-menu activator=".openMenuMarket" right offset-x>
-      <v-list id="menuMarket" class="font2">
-        <v-list-item-group active-class="activeClass">
-          <v-list-item disabled>
-            <v-list-item-title>MARKETPLACE</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item v-for="(item,i) in dataDrawer.expansion[0].selection" :key="i" :to="localePath(item.to)">
-            <v-list-item-title>{{item.name}}</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-menu>
-
     <!-- menu login -->
-    <v-menu activator=".openMenuLogin" right offset-x>
+    <v-menu activator=".openMenuLogin" bottom offset-y>
       <v-list class="font2" color="var(--secondary)" style="--c:#fff">
         <v-list-item-group active-class="activeClass">
           <v-list-item
@@ -111,7 +96,7 @@
 
 <script>
 export default {
-  name: "HeaderMenuComponent",
+  name: "NavbarMenuComponent",
   data() {
     return {
       messages: 1,
@@ -161,8 +146,6 @@ export default {
         { icon:"twitch", url:"#" }
       ],
       dataMenuLogin: [
-        { key:"profile", name:"Profile" },
-        { key:"library", name:"Library" },
         { key:"logout", name:"Log out" },
       ],
     };
@@ -192,4 +175,4 @@ export default {
 };
 </script>
 
-<style src="~/assets/styles/components/header.scss" lang="scss" />
+<style src="~/assets/styles/components/navbar.scss" lang="scss" />
