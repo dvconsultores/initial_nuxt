@@ -9,6 +9,22 @@ export default ({app}, inject) => {
   inject('log', log);
 
 
+  // target-tooltip =========================================================================================================//
+  const targetTooltip = (el, isResizeY = 0, isResizeX = 0) => {
+    setTimeout(() => {
+      const target = document.querySelector(el);
+      document.documentElement.style.setProperty('--x-tooltip', `${target.getBoundingClientRect().left + isResizeX}px`)
+      document.documentElement.style.setProperty('--y-tooltip', `${target.getBoundingClientRect().top + isResizeY}px`)
+    }, 100);
+  }
+  /* usage:
+    $targetTooltip(target) <-- if mounted
+    $targetTooltip(target, y, x) <-- if resize
+  */
+  inject('targetTooltip', targetTooltip);
+
+
+
   // alerts =========================================================================================================//
   const alerts = (key, {title, desc, color, centered, top, bottom, left, right} = {}) => {
     if (key === "success" || key === "cancel") {
