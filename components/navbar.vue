@@ -1,7 +1,7 @@
 <template>
   <div>
     <MenuNavbar ref="menu"></MenuNavbar>
-    <v-app-bar id="navbar" color="transparent" fixed class="isolate font2">
+    <v-app-bar id="navbar" color="transparent" absolute class="isolate">
       <nuxt-link to="/">
         <img src="~/assets/sources/logos/logo.svg" alt="logo" style="--w: clamp(10em, 13vw, 13.414375em)">
       </nuxt-link>
@@ -9,8 +9,8 @@
       <aside class="middle tcap deletemobile">
         <a
           v-for="(item, i) in dataNavbar" :key="i"
-          :class="{active: item.active}"
-          @click="dataNavbar.forEach(e=>e.active=false); item.active = true; $router.push(localePath(item.to))">
+          :class="{active: item.to === $route.path}"
+          @click="$router.push(localePath(item.to))">
           {{item.name}}
         </a>
       </aside>
@@ -38,27 +38,22 @@ export default {
       dataNavbar: [
         {
           name: "portfolio",
-          active: false,
           to: ""
         },
         {
           name: "swap",
-          active: false,
           to: ""
         },
         {
           name: "farm",
-          active: false,
           to: ""
         },
         {
           name: "pools",
-          active: false,
           to: ""
         },
         {
           name: "xhpot",
-          active: false,
           to: ""
         },
       ],
@@ -77,14 +72,7 @@ export default {
   //   if (theme === "light") {this.themeButton = true}
   //   else {this.themeButton = false}
   // },
-  mounted() {
-    this.checkoutNavigation()
-  },
   methods: {
-    checkoutNavigation() {
-      const verify = el => el.to === this.$route.path
-      if (this.dataNavbar.some(verify)) this.dataNavbar.filter(verify)[0].active = true
-    },
     // changeTheme(theme) {
     //   this.$store.commit("switchTheme", theme);
     //   this.themeButton = !this.themeButton;
