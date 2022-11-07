@@ -31,8 +31,11 @@
 </template>
 
 <script>
+import computeds from '~/mixins/computeds'
+
 export default {
   name: "NavbarComponent",
+  mixins: [computeds],
   data() {
     return {
       dataNavbar: [
@@ -58,9 +61,6 @@ export default {
         },
       ],
     };
-  },
-  computed: {
-    user() {return this.$store.state.dataUser},
   },
   // created() {
   //   const theme = localStorage.getItem("theme");

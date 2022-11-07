@@ -80,6 +80,9 @@ export const mutations = {
           // twitter
           keys = 'mdi-twitter'
           values = `https://twitter.com/${values}`
+        } else if (keys === "facebook") {
+          // facebook
+          values = `https://facebook.com/${values}`
         }
         // push data socials
         state.dataUser.dataSocial.push({ icon: keys, link: values })
@@ -110,18 +113,18 @@ export const actions = {
       commit("setData", wallet.getAccountId()); /*  -->   if use only smart contract */
       /*           if use smart contract + backend            */
       // this.$axios.post(`${this.$axios.defaults.baseURL}api/v1/get-perfil-data/`, { "wallet": wallet.getAccountId() })
-      // .then(fetch => {
+      // .then(result => {
       //   // set data profile
-      //   fetch.data[0] ? commit("setData", fetch.data[0]) : commit("setData", wallet.getAccountId());
+      //   result.data[0] ? commit("setData", result.data[0]) : commit("setData", wallet.getAccountId());
       // // catch error django
-      // }).catch(error => {
+      // }).catch(err => {
       //   this.$alert("cancel", {desc: error.message})
-      //   console.error(error);
+      //   console.error(err);
       // })
     // catch error near
-    } catch (error) {
-      this.$alert("cancel", {desc: error.message})
-      console.error(error);
+    } catch (err) {
+      this.$alert("cancel", {desc: err.message})
+      console.error(err);
     }
   },
 };
