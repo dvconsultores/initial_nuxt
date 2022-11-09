@@ -74,7 +74,7 @@ export const mutations = {
   },
   signIn() {
     window.$nuxt.$wallet.requestSignIn(
-      'contract.musicfeast.testnet'
+      'contract.globaldv.testnet'
     );
   },
   signOut() {
