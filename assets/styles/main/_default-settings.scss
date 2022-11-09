@@ -103,7 +103,9 @@ body {background: var(--bg-ap)}
 /* // // elements-active // // */ 
 :is(.primary--text, button[type].primary--text) {
   color: var(--active) !important;
+  
   & :is(span, i) {color: var(--active) !important}
+  
   & .v-input__slot::after {
     background: var(--active) !important;
     border-color: var(--active) !important;
@@ -308,11 +310,15 @@ img:not(.not_html, .not) {
   transform: var(--t);
   filter: var(--f);
   overflow: var(--o);
+  
   .v-image__image {transform: var(--t)}
+  
   .v-skeleton-loader {
     width: 100%;
     height: 100%;
+    
     .v-skeleton-loader__card .v-skeleton-loader__card-heading {display: none !important}
+    
     > *, > * > * {
       width: 100%;
       height: 100%;
@@ -342,17 +348,20 @@ img:not(.not_html, .not) {
   filter: var(--f);
   transform: var(--t);
   max-width: var(--w);
+  
   .v-tabs-bar {
     background-color: var(--bg);
     border: var(--b);
     border-radius: var(--br);
     height: var(--h);
+    
     .v-slide-group__content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: var(--p);
       gap: var(--g);
+      
       .v-tab {
         padding: var(--p-tab);
         min-width: max-content;
@@ -380,9 +389,11 @@ img:not(.not_html, .not) {
   --br: none;
   --c-label: var(--clr-inv);
   --h: 2px;
+
   .v-slider__track {
     &-container {border-radius: var(--br);height: var(--h); overflow: hidden}
   }
+  
   .v-slider__thumb-label-container {
     * {color: var(--c-label) !important}
   }
@@ -408,6 +419,7 @@ img:not(.not_html, .not) {
   border-radius: var(--br);
   border: var(--b);
   box-shadow: var(--bs) !important;
+  
   &.v-btn--disabled * {
     background: var(--bg-disabled);
     color: var(--c-disabled);
@@ -433,12 +445,14 @@ img:not(.not_html, .not) {
   max-height: 2.25em;
   transform: var(--t);
   filter: var(--f);
+  
   & :is(span, img, i) {
     text-transform: var(--tt);
     letter-spacing: var(--ls);
     line-height: var(--lh);
     color: var(--c);
   }
+  
   .v-btn__content {
     & :is(img, i) {margin-left: var(--ml);margin-right: var(--mr)}
   }
@@ -449,6 +463,7 @@ img:not(.not_html, .not) {
 //- input textarea
 .v-input:not(.not_vuetify, .not) {
   --h-input: 85px;
+
   textarea {height: var(--h-input)}
 }
 
@@ -501,12 +516,14 @@ img:not(.not_html, .not) {
   width: var(--w);
   max-width: var(--max-w);
   min-width: var(--min-w);
+  
   // under testing
   & .v-input__control {
     display: flex;
     justify-content: center;
   }
   // under testing
+  
   & .v-input__slot {
     background: var(--bg) !important;
     border-radius: var(--br) !important;
@@ -517,9 +534,11 @@ img:not(.not_html, .not) {
     transform: var(--t);
     filter: var(--f);
   }
+  
   // testing
   & i {font-size: calc(var(--fs-icon) + .3em)}
   // testing
+  
   // text //
   & :is(input[type], button[type], textarea, .v-select__selection) {
     color: var(--c);
@@ -533,6 +552,7 @@ img:not(.not_html, .not) {
     -moz-text-stroke: var(--stroke);
     -ms-text-stroke: var(--stroke);
     -o-text-stroke: var(--stroke);
+    
     // placeholder //
     &::placeholder {
       color: var(--c-place);
@@ -548,6 +568,7 @@ img:not(.not_html, .not) {
       -o-text-stroke: var(--stroke-place);
     }
   }
+  
   // label //
   & .v-label {
     color: var(--c-label);
@@ -562,6 +583,7 @@ img:not(.not_html, .not) {
     -ms-text-stroke: var(--stroke-label);
     -o-text-stroke: var(--stroke-label);
   }
+  
   // input statements //
   &.v-input--is-focused:not(.not_focus, .not_statement) .v-input__slot {--b: 1px solid rgba(255, 255, 255, 0.3)}
   &.error--text:not(.not_error, .not_statement) .v-input__slot {--b: 1px solid var(--error)}
@@ -577,6 +599,7 @@ img:not(.not_html, .not) {
   --fw: 400;
   --size: 20px;
   --t: initial;
+
   .v-badge__badge {
     display: grid;
     place-content: center;
@@ -605,12 +628,16 @@ img:not(.not_html, .not) {
   background: var(--secondary) !important;
   border-radius: 0 $border-btn $border-btn $border-btn !important;
   overflow: hidden;
+  
   :is(.v-list-item__title, span) {
     color: #ffffff !important;
+    
     &::first-letter {text-transform: uppercase}
   }
+  
   .v-list-item--active {
     background: $clr-btn !important;
+    
     :is(.v-list-item__title, span) {color: $clr-text-btn !important}
   }
 }
@@ -619,6 +646,7 @@ img:not(.not_html, .not) {
 //- dialog -//
 .v-dialog {
   overscroll-behavior: contain;
+  
   &::-webkit-scrollbar {display: none}
   // @include media(max, 500px) {margin-inline: 0}
 }
@@ -644,6 +672,7 @@ img:not(.not_html, .not) {
   --d: 0;
   --t: var(--distance);
   --r: var(--distance);
+
   position: absolute !important;
   top: var(--top) !important;
   right: var(--right) !important;

@@ -5,7 +5,11 @@
   background: center no-repeat fixed var(--bg-ap);
   background-size: cover;
   // overflow: hidden;
+
   //- responsive font size -//
+  & > * {
+    font-size: clamp(12px, 1vw, 16px);
+  }
   .v-main {
     & > * {
       @include media(max,small) {
@@ -13,6 +17,7 @@
       }
     }
   }
+
   // footer margin modifiable
   & .with {
     padding-block: calc(var(--h-navbar) + 20px) var(--h-footer) !important
