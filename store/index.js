@@ -1,18 +1,3 @@
-import * as nearAPI from 'near-api-js'
-
-const
-  { connect, keyStores, WalletConnection } = nearAPI,
-  keyStore = new keyStores.BrowserLocalStorageKeyStore(),
-  config = {
-    networkId: "testnet",
-    keyStore, 
-    nodeUrl: "https://rpc.testnet.near.org",
-    walletUrl: "https://wallet.testnet.near.org",
-    helperUrl: "https://helper.testnet.near.org",
-    explorerUrl: "https://explorer.testnet.near.org",
-  };
-let wallet = null
-
 export const state = () => ({
   theme: "light",
   overlay: { opacity: 0.2, color: "black" },
@@ -26,7 +11,6 @@ export const state = () => ({
     instagram: undefined,
     twitter: undefined,
     telegram: undefined,
-    logged: false,
     tier: 2,
     balance: 0,
     dataSocial: [],
@@ -44,11 +28,10 @@ export const mutations = {
     else { state.overlay.opacity = 0.5; state.overlay.color = "black" }
   },
   setData(state, data) {
-    if (wallet.isSignedIn() && typeof data === 'string') {
+    if (window.$nuxt.$wallet.isSignedIn() && typeof data === 'string') {
       state.dataUser.avatar = require('~/assets/sources/images/avatar.png');
       state.dataUser.accountId = data;
-      state.dataUser.logged = true;
-    } else if (wallet.isSignedIn() && typeof data === 'object') {
+    } else if (window.$nuxt.$wallet.isSignedIn() && typeof data === 'object') {
       state.dataUser.accountId = data.wallet;
       state.dataUser.banner = data.banner ? this.$axios.defaults.baseURL+data.banner : undefined;
       state.dataUser.avatar = data.avatar ? this.$axios.defaults.baseURL+data.avatar : require('~/assets/sources/images/avatar.png');
@@ -87,38 +70,33 @@ export const mutations = {
         // push data socials
         state.dataUser.dataSocial.push({ icon: keys, link: values })
       }
-      state.dataUser.logged = true;
     };
   },
   signIn() {
-    wallet.requestSignIn(
-      'contract.globaldv.testnet'
+    window.$nuxt.$wallet.requestSignIn(
+      'contract.musicfeast.testnet'
     );
   },
-  signOut(state) {
-    wallet.signOut();
-    state.dataUser.logged = false;
+  signOut() {
+    window.$nuxt.$wallet.signOut();
+    setTimeout(() => this.$router.go(0), 100);
     this.$router.push(this.localePath('/'));
   },
 };
 
 export const actions = {
-  async getData({commit}) {
+  getData({commit}) {
     try {
-      // connect to NEAR
-      const near = await connect(config);
-      // create wallet connection
-      wallet = new WalletConnection(near);
       // get data user
-      commit("setData", wallet.getAccountId()); /*  -->   if use only smart contract */
+      commit("setData", window.$nuxt.$wallet.getAccountId()); /*  -->   if use only smart contract */
       /*           if use smart contract + backend            */
-      // this.$axios.post(`${this.$axios.defaults.baseURL}api/v1/get-perfil-data/`, { "wallet": wallet.getAccountId() })
+      // this.$axios.post(`${this.$axios.defaults.baseURL}api/v1/get-perfil-data/`, { "wallet": window.$nuxt.$wallet.getAccountId() })
       // .then(result => {
       //   // set data profile
-      //   result.data[0] ? commit("setData", result.data[0]) : commit("setData", wallet.getAccountId());
+      //   result.data[0] ? commit("setData", result.data[0]) : commit("setData", window.$nuxt.$wallet.getAccountId());
       // // catch error django
       // }).catch(err => {
-      //   this.$alert("cancel", {desc: error.message})
+      //   this.$alert("cancel", {desc: err.message})
       //   console.error(err);
       // })
     // catch error near

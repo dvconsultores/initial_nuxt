@@ -20,8 +20,8 @@
           <span>${{user.balance}}</span>
         </v-btn>
         
-        <v-btn v-show="!user.logged" class="btn" @click="$store.commit('signIn')">Connect wallet</v-btn>
-        <v-btn v-show="user.logged" class="btn openMenuLogin">
+        <v-btn v-show="!isLogged" class="btn" @click="$store.commit('signIn')">Connect wallet</v-btn>
+        <v-btn v-show="isLogged" class="btn openMenuLogin">
           <span>{{user.accountId}}</span>
           <v-icon>mdi-chevron-down</v-icon>
         </v-btn>
