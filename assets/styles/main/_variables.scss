@@ -271,7 +271,7 @@ $skew-left: skewX(-12deg) translateX(-1px);
     color: var(--c);
     font-size: 1em;
     font-weight: var(--fw);
-    text-transform: var(--tt);
+    text-transform: var(--tt, initial);
     letter-spacing: var(--ls);
     line-height: var(--lh);
   }
