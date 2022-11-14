@@ -9,7 +9,7 @@ export default async function NearApi() {
       networkId: "testnet",
       keyStore, 
       nodeUrl: "https://rpc.testnet.near.org",
-      walletUrl: "https://wallet.testnet.near.org",
+      walletUrl: localStorage.getItem("walletUrl"),
       helperUrl: "https://helper.testnet.near.org",
       explorerUrl: "https://explorer.testnet.near.org",
     },

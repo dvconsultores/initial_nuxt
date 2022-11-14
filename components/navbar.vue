@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModalsConnect ref="connect"></ModalsConnect>
     <MenuNavbar ref="menu"></MenuNavbar>
     <v-app-bar id="navbar" color="transparent" absolute class="isolate">
       <nuxt-link to="/">
@@ -20,7 +21,7 @@
           <span>${{user.balance}}</span>
         </v-btn>
         
-        <v-btn v-show="!isLogged" class="btn" @click="$store.commit('signIn')">Connect wallet</v-btn>
+        <v-btn v-show="!isLogged" class="btn" @click="$refs.connect.modalConnect = true">Connect wallet</v-btn>
         <v-btn v-show="isLogged" class="btn openMenuLogin">
           <span>{{user.accountId}}</span>
           <v-icon>mdi-chevron-down</v-icon>
