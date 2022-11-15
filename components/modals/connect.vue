@@ -3,7 +3,7 @@
     <aside class="space">
       <span class="h9_em">Connect Wallet</span>
       
-      <v-btn icon>
+      <v-btn icon @click="modalConnect = false">
         <v-icon size="1.5em">mdi-close</v-icon>
       </v-btn>
     </aside>
