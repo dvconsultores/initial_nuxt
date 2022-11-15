@@ -83,6 +83,8 @@ export const mutations = {
     else if (key === 'myNear') {
       localStorage.setItem("walletUrl", myNearWallet)
       window.$nuxt.$wallet._walletBaseUrl = myNearWallet
+    } else if (key === 'sender') {
+      return this.$alert("cancel", {title: "comming soon", desc: "is comming soon for now"})
     }
     
     window.$nuxt.$wallet.requestSignIn(
