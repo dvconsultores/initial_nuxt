@@ -332,17 +332,18 @@ img:not(.not_html, .not) {
 .v-tabs:not(.not_vuetify, .not) {
   --bg: var(--primary);
   --c: var(--clr);
-  --c-active: var(--clr-btn-pressed);
+  --bg-active: hsl(59, 83%, 53%, .13);
+  --c-active: var(--primary);
   --b: .8px solid rgba(#707070, .1);
   --br: 5px;
   --w: max-content;
   --h: 3em;
-  --p: 1em;
+  --p: 5px;
   --g: 1em;
   --tt: none;
   // tab
-  --p-tab: .2em;
-  --br-tab: 5px;
+  --p-tab: calc(var(--p) * 2);
+  --br-tab: var(--br);
   --overflow: hidden;
   --t: none;
   --f: none;
@@ -377,11 +378,16 @@ img:not(.not_html, .not) {
           color: var(--c);
         }
         &--active {
-          color: var(--c-active);
-          & > * {color: var(--c-active)}
+          background: var(--bg-active) !important;
+          color: var(--c-active) !important;
+          * {color: var(--c-active) !important}
         }
       }
     }
+  }
+  
+  .v-tabs-slider {
+    background-color: var(--c-active) !important;
   }
 }
 
@@ -438,8 +444,6 @@ img:not(.not_html, .not) {
   --ls: normal;
   --t: none;
   --f: none;
-  --ml: none;
-  --mr: none;
 
   color: var(--c);
   font-size: var(--fs, 1em);
@@ -454,8 +458,10 @@ img:not(.not_html, .not) {
     color: var(--c);
   }
   
+  // margin
   .v-btn__content {
-    & :is(img, i) {margin-left: var(--ml);margin-right: var(--mr)}
+    display: flex;
+    gap: var(--g, 5px);
   }
 }
 
