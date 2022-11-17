@@ -99,6 +99,10 @@ export const mutations = {
 };
 
 export const actions = {
+  modalConnect() {
+    const layout = this.$router.app.$children.find(data=>data.$el === document.getElementById("layout"));
+    layout.$refs.connect.modalConnect = true
+  },
   getData({commit}) {
     try {
       // get data user
