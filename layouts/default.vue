@@ -1,13 +1,13 @@
 <template>
   <v-app id="layout" class="relative">
-    <Alerts ref="alerts"></Alerts>
-    <ModalsConnect ref="connect"></ModalsConnect>
+    <Alerts ref="alerts" />
+    <ModalsConnect ref="connect" />
     <Navbar ref="navbar" />
     
     <v-main :class="wrapperSpace?'with':'without'" class="parent">
       <nuxt-child />
     </v-main>
-    <Footer ref="footer"></Footer>
+    <Footer ref="footer" />
   </v-app>
 </template>
 
