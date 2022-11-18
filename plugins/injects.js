@@ -34,7 +34,7 @@ export default ({app}, inject) => {
       throw new Error('Invalid key, try "success" or "cancel"')
     }
   }
-  // usage $alert(key, title, desc)
+  // usage $alert(key, {title, desc})
   inject('alert', alerts);
 
 
