@@ -147,7 +147,7 @@ export default {
 
   // Router property -  https://nuxtjs.org/docs/2.x/features/file-system-routing#the-router-property
   router: {
-    base: '/global-dv-nuxt2/',
+    base: development ? '/global-dv-nuxt2/' : '/',
     // middleware: ['route-validator'],
   },
 
@@ -158,7 +158,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: '/global-dv-nuxt2/',
+    publicPath: development ? '/global-dv-nuxt2/' : '/',
     plugins: [
       new webpack.ProvidePlugin({
         // global modules
