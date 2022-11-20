@@ -127,14 +127,12 @@ export const actions = {
 
 export const getters = {
   pagination: () => ({items, currentPage, itemsPerPage, search, filterA, filterB}) => {
-    // filters
-    let filters = items;
     // search
-    if (search) filters = filters.filter(data => data.name.includes(search))
+    if (search) items = items.filter(data => data.name.includes(search))
     // filter A (tier)
-    if (filterA) filters = filters.filter(data => data.tier === filterA)
+    if (filterA) items = items.filter(data => data.tier === filterA)
 
-    return filters.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    return items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
   }
 };
 
