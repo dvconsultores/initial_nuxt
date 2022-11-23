@@ -82,7 +82,7 @@ export default ({app}, inject) => {
   inject('equalData', equalData);
 
 
-  // equalData =========================================================================================================//
+  // formData =========================================================================================================//
   const formData = (form) => {
     const formData = new FormData();
     for (const [keys, values] of Object.entries(form)) {
