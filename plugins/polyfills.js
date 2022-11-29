@@ -98,4 +98,17 @@ export default () => {
     }
   }
   // formatter(number) <-- example
+
+  // groupBy =========================================================================================================//
+  if (!Array.prototype.groupBy) {
+    Array.prototype.groupBy = function(by) {
+      return this.reduce((acc, obj) => {
+        const key = obj[by];
+        const curGroup = acc[key] ?? [];
+        
+        return { ...acc, [key]: [...curGroup, obj] };
+      }, {});
+    }
+  }
+  // groupBy(by) <-- example
 }
