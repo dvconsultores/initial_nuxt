@@ -273,6 +273,52 @@ img:not(.not_html, .not) {
 /* // //  vuetify classes (components) // // */ 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
 
+//- data table -//
+.v-data-table {
+  --bg: transparent;
+  --spacing: 20px;
+  // th
+  --c-th: var(--accent);
+  --fw-th: var(--fw, bold);
+  --fs-th: 1.1em;
+  --distance-th: 0;
+  // td
+  --bg-td: var(--secondary);
+  --p-td: 20px;
+  --br-td: 30px;
+  --fs-td: 1.3125em;
+
+  background-color: var(--bg) !important;
+  table {border-spacing: 0 var(--spacing) !important}
+
+  thead {
+    transform: translateY(var(--distance-th)) !important;
+    tr {
+      th {
+        border-bottom: none !important;
+        span {
+          font-size: var(--fs-th) !important;
+          font-weight: var(--fw-th) !important;
+          color: var(--c-th) !important;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: var(--bg-td) !important;
+      td {
+        padding: var(--p-td) !important;
+        border-bottom: none !important;
+        &:not(:has(span)), span:not(.v-btn *) {font-size: var(--fs-td) !important}
+        &:first-of-type {border-radius: var(--br-td) 0 0 var(--br-td) !important}
+        &:last-of-type {border-radius: 0 var(--br-td) var(--br-td) 0 !important}
+      }
+    }
+  }
+}
+
 //- avatar -//
 .v-avatar:not(.not_vuetify, .not) {
   img, .v-image {
