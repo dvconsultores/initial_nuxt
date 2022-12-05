@@ -8,12 +8,12 @@
 
   //- responsive font size -//
   & > * {
-    font-size: clamp(12px, 1vw, 16px);
+    font-size: var(--resize);
   }
   .v-main {
     & > * {
-      @include media(max,small) {
-        font-size: clamp(10px, 1.5vw, 12px)
+      @include media(max, small) {
+        font-size: var(--resize-mobile)
       }
     }
   }
