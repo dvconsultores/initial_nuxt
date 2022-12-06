@@ -11,7 +11,7 @@
       :overlay-color="$store.state.overlay.color"
       class="font2"
     >
-      <section class="v-navigation-drawer__content--navbar divcol center gap2">
+      <section class="v-navigation-drawer__content--header divcol center gap2">
         <v-btn icon class="close" style="--t: 8px; --r: 10px" @click="drawer=false">
           <img src="~/assets/sources/icons/close.svg" alt="close" style="--w:2.375em">
         </v-btn>
