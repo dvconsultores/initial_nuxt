@@ -337,7 +337,6 @@ img:not(.not_html, .not) {
   --h: initial;
   --max-h: none;
   --min-h: none;
-  --ar: initial;
   --p: none;
   --b: none;
   --br: initial;
@@ -353,7 +352,6 @@ img:not(.not_html, .not) {
   height: var(--h);
   max-height: var(--max-h);
   min-height: var(--min-h);
-  aspect-ratio: var(--ar);
   padding: var(--p);
   border: var(--b);
   border-radius: var(--br);
