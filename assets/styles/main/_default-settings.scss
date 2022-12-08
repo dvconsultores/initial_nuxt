@@ -210,13 +210,13 @@ h4:not(.not_typography, .not) {
 h6:not(.not_typography, .not) {
   font-weight: var(--fw, 400);
   font-family: var(--font1);
-  font-size: var(--fs, 1em);
+  font-size: var(--fs, 16px);
   letter-spacing: 0.03em;
 }
 p:not(.not_typography, .not) {
   font-weight: var(--fw, 400);
   font-family: var(--font1);
-  font-size: var(--fs, 1.05em);
+  font-size: var(--fs, 16.8px);
   line-height: 1.1;
 }
 .hspan {
