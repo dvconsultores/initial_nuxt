@@ -8,12 +8,12 @@
 
   //- responsive font size -//
   & > * {
-    font-size: var(--resize);
+    font-size: var(--resizer);
   }
   .v-main {
     & > * {
       @include media(max, small) {
-        font-size: var(--resize-mobile)
+        font-size: var(--resizer-mobile)
       }
     }
   }
