@@ -715,14 +715,3 @@ img:not(.not_html, .not) {
 .card {
   @include card;
 }
-
-//- close -//
-.close {
-  --d: 0;
-  --t: var(--d);
-  --r: var(--d);
-
-  position: absolute !important;
-  top: var(--t) !important;
-  right: var(--r) !important;
-}
