@@ -112,6 +112,16 @@ export default () => {
   }
   // groupBy(by) <-- example
 
+  // groupAtPairs =========================================================================================================//
+  if (!Array.prototype.groupAtPairs) {
+    Array.prototype.groupAtPairs = function() {
+      const pairs = this.filter((item, i) => i % 2 === 0);
+      const unpairs = this.filter((item, i) => i % 2 !== 0);
+      
+      return unpairs.map((item, i) => [unpairs[i], pairs[i]])
+    }
+  }
+  // groupAtPairs() <-- example
 
   // formatTime =========================================================================================================//
   if (!Number.prototype.formatTime) {
