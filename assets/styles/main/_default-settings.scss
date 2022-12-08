@@ -179,7 +179,7 @@ button:not(.not_typography, .not) {
     text-transform: var(--tt-first, uppercase)
   }
 }
-:is(p, a, span, label, h1, h2, h3, h4, h5, h6):not(.not_typography, .not) {line-height: 1}
+:is(a, span, label, h1, h2, h3, h4, h5, h6):not(.not_typography, .not) {line-height: 1}
 h1:not(.not_typography, .not) {
   font-weight: var(--fw, 400);
   font-family: var(--font2);
@@ -229,7 +229,6 @@ a:not(.not_typography, .not) {
   font-weight: var(--fw, 400);
   font-family: var(--font1);
   font-size: var(--fs, max(13px, 1em));
-  line-height: 1.1;
 }
 label:not(.v-input .v-label, .not_typography, .not) {
   font-weight: var(--fw, 400);
