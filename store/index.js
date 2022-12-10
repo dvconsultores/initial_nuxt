@@ -114,13 +114,13 @@ export const actions = {
       //   result.data[0] ? commit("setData", result.data[0]) : commit("setData", window.$nuxt.$wallet.getAccountId());
       // // catch error django
       // }).catch(err => {
-      //   this.$alert("cancel", {desc: err.message})
       //   console.error(err);
+      //   this.$alert("cancel", {desc: err.message})
       // })
     // catch error near
     } catch (err) {
-      this.$alert("cancel", {desc: err.message})
       console.error(err);
+      this.$alert("cancel", {desc: err.message})
     }
   },
 };
