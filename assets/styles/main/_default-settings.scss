@@ -526,6 +526,11 @@ img:not(.not_html, .not) {
     display: flex;
     gap: var(--g, 5px);
   }
+  
+  // &.v-btn--disabled {
+  //   opacity: .5;
+  //   background-color: var(--bg, var(--primary)) !important;
+  // }
 }
 
 //- default inputs -//

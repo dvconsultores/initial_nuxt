@@ -242,8 +242,7 @@ $skew-left: skewX(-12deg) translateX(-1px);
   --h: initial;
   --max-h: none;
   --min-h: 36px;
-  --ml: none;
-  --mr: none;
+  --g: 5px;
   --br: 30px;
   &:has(> .v-btn__content > :only-child) {--br: 10px};
   --bs: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -273,14 +272,17 @@ $skew-left: skewX(-12deg) translateX(-1px);
   & :is(span, img, i) {
     color: var(--c);
     font-size: 1em;
-    font-weight: var(--fw);
+    font-weight: var(--fw) !important;
     text-transform: var(--tt, initial);
     letter-spacing: var(--ls);
     line-height: var(--lh);
   }
   
   // margin
-  & :is(img, i) {margin-left: var(--ml);margin-right: var(--mr)}
+  &, > .v-btn__content {
+    display: flex;
+    gap: var(--g);
+  }
 }
 
 //- cards -//
