@@ -1,5 +1,5 @@
 <template>
-  <div id="menuNavbar">
+  <div id="menu-navbar">
     <!--////////////// drawers //////////////-->
     <!-- toggle drawer -->
     <CustomeDrawer :model="drawer" @update="drawer = $event">
