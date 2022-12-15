@@ -232,7 +232,7 @@ a:not(.not_typography, .not) {
   text-decoration: var(--under, none);
   font-family: var(--font1);
   font-weight: var(--fw, 400) !important;
-  font-size: var(--fs, max(13px, 1em));
+  font-size: var(--fs, max(13px, 1em)) !important;
   letter-spacing: var(--ls, normal);
   line-height: var(--lh, 1);
 }
@@ -245,7 +245,7 @@ label:not(.v-input .v-label, .not_typography, .not) {
 }
 .hspan {
   text-decoration: var(--under, initial);
-  font-size: var(--fs, 16px);
+  font-size: var(--fs, 16px) !important;
   letter-spacing: var(--ls, normal);
   line-height: var(--lh, 1);
 }
@@ -559,6 +559,7 @@ img:not(.not_html, .not) {
   --c-label: #FFFFFF;
   --c-place: #6e6e6e;
   --b: initial;
+  --ol: initial;
   --br: 30px;
   --p: 0 12px;
   --w: initial;
@@ -609,6 +610,7 @@ img:not(.not_html, .not) {
     background: var(--bg) !important;
     border-radius: var(--br) !important;
     border: var(--b);
+    outline: var(--ol);
     padding: var(--p) !important;
     min-height: var(--h);
     box-shadow: var(--bs) !important;
@@ -666,8 +668,8 @@ img:not(.not_html, .not) {
   }
   
   // input statements //
-  &.v-input--is-focused:not(.not_focus, .not_statement) .v-input__slot {--b: 1px solid rgba(255, 255, 255, 0.3)}
-  &.error--text:not(.not_error, .not_statement) .v-input__slot {--b: 1px solid var(--error)}
+  &.v-input--is-focused:not(.not_focus, .not_statement) .v-input__slot {--ol: 1px solid rgba(255, 255, 255, 0.3)}
+  &.error--text:not(.not_error, .not_statement) .v-input__slot {--ol: 1px solid var(--error)}
   &.v-input--is-disabled:not(.not_disabled, .not_statement) {opacity: var(--o-disabled); pointer-events: none}
 }
 
