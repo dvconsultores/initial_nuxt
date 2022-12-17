@@ -151,6 +151,7 @@ computed: {
 <v-pagination
   v-model="currentPage"
   :length="pagination_per_page"
+  :total-visible="7"
 ></v-pagination>
 
 */
