@@ -28,7 +28,7 @@ export default ({app}, inject) => {
   // alerts =========================================================================================================//
   const alerts = (key, {title, desc, color, centered, top, bottom, left, right} = {}) => {
     if (key === "success" || key === "cancel") {
-      app.router.app.$children.find(data=>data.$el === document.getElementById("layout")).$refs.alerts.
+      app.router.app.$children.find(data=>data.$el === document.querySelector(".v-application")).$refs.alerts.
         GenerateAlert(key, title, desc, color, centered, top, bottom, left, right);
     } else {
       throw new Error('Invalid key, try "success" or "cancel"')

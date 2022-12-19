@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <v-app>
+    <Alerts ref="alerts" />
     <nuxt />
-  </div>
+  </v-app>
 </template>
