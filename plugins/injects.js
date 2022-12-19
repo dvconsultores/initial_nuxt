@@ -24,7 +24,6 @@ export default ({app}, inject) => {
   inject('targetTooltip', targetTooltip);
 
 
-
   // alerts =========================================================================================================//
   const alerts = (key, {title, desc, color, centered, top, bottom, left, right} = {}) => {
     if (key === "success" || key === "cancel") {
