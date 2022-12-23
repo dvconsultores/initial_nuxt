@@ -15,9 +15,13 @@ export const state = () => ({
     balance: 0,
     dataSocial: [],
   },
+  verificationEmail: false,
 });
 
 export const mutations = {
+  verificationRedirect(state) {
+    state.verificationEmail = true
+  },
   switchTheme(state, theme) {
     // theme
     state.theme = theme

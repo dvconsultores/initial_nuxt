@@ -5,7 +5,7 @@
     <Navbar ref="navbar" />
     
     <v-main :class="wrapperSpace?'with':'without'" class="parent">
-      <nuxt-child />
+      <nuxt-child data-nuxt="childs" />
     </v-main>
     <Footer ref="footer" />
   </v-app>

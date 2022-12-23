@@ -42,7 +42,13 @@
           </v-form>
 
           <aside class="divcol center tcenter" style="gap: inherit; --fs: max(15px, 1.25em)">
-            <a style="--fw: 800" @click="windowStep = 3">
+            <a
+              style="--fw: 800"
+              @click="
+                $store.state.verificationEmail
+                ? windowStep = 3
+                : $router.push(localePath('/verification-email/:login:recover'))
+              ">
               ¿Olvidaste tu contraseña?
             </a>
 
@@ -204,6 +210,15 @@
 export default {
   name: "LoginPage",
   layout: "empty-layout",
+  asyncData({ from, store }) {
+    let windowStep
+    if (from.params.verification?.includes(":recover") && store.state.verificationEmail) windowStep = 3
+    else if (from.params.verification?.includes(":register") && store.state.verificationEmail) windowStep = 2
+
+    return {
+      windowStep
+    }
+  },
   data() {
     return {
       windowStep: 1,
