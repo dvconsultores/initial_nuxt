@@ -13,7 +13,7 @@ export default {
   },
   // under testing
   computed: {
-    baseUrl() {
+    baseDomainUrl() {
       return this.$axios.defaults.baseURL
     },
     isLogged() {
