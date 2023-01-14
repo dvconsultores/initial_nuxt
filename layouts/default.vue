@@ -1,6 +1,7 @@
 <template>
   <v-app id="layout" class="relative">
     <Alerts ref="alerts" />
+    <ModalsConfirmMsg ref="confirmMsg" />
     <ModalsConnect ref="connect" />
     <Navbar ref="navbar" />
     

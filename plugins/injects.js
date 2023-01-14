@@ -37,6 +37,15 @@ export default ({app}, inject) => {
   inject('alert', alerts);
 
 
+  // confirmMsg =========================================================================================================//
+  const confirmMsg = ({title, desc, color, fSuccess, fCancel, fOpen} = {}) => {
+    app.router.app.$children.find(data=>data.$el === document.querySelector(".v-application")).$refs.confirmMsg.
+      GenerateMsg(fSuccess, fCancel, fOpen, title, desc, color);
+  }
+  // usage $alert(key, {title, desc})
+  inject('confirmMsg', confirmMsg);
+
+
   // scroll-to =========================================================================================================//
   const scrollTo = id => {
     if (id === 'top' || id === 'home' || id === '/' || id === '#' || id === '') {

@@ -14,27 +14,39 @@
       </div> -->
 
       <div class="window-content divcol center tcenter" style="gap: 2em">
-        <img src="~/assets/sources/logos/logo-login.svg" alt="logo" style="--w: max(150px, 18em)">
+        <img src="~/assets/sources/logos/logo.svg" alt="logo" style="--w: max(150px, 18em)">
 
         <div class="divcol center" style="gap: 1em; margin-top: 7.5em">
           <p class="p hspan" style="--fs: max(16px, 1.8em); --fw: 500">
             Hemos enviado un código de verificación a tu correo electrónico 
-            <span style="--fw: 800; font-style: italic">pedroperez@gmail.com</span>
+            <span style="--fw: 800; font-style: italic">{{email}}</span>
           </p>
 
           <v-otp-input
             v-model="otp"
             length="5"
             type="number"
+            @keyup="$event => $event.key === 'Enter' ? verificationCode() : ''"
           ></v-otp-input>
+          <!-- <v-text-field
+            v-model="otp"
+            hide-details solo
+            @keyup="$event => $event.key === 'Enter' ? verificationCode() : ''"
+          ></v-text-field> -->
 
-          <v-btn class="btn" style="--fs: max(13px, 1.6em)" @click="verificationCode()">
-            Verificar
-          </v-btn>
+
+          <v-btn
+            :disabled="!otp"
+            class="btn" style="--fs: max(13px, 1.6em)"
+            @click="verificationCode()"
+          >Verificar</v-btn>
         </div>
 
         <div class="divcol" style="gap: 1em;">
-          <a class="hspan" style="text-decoration: underline; --fs: max(16px, 1.6em); --fw: 800">Reenviar Código</a>
+          <a
+            class="hspan" style="text-decoration: underline; --fs: max(16px, 1.6em); --fw: 800"
+            @click="sendEmail()"
+          >Reenviar Código</a>
           <span class="hspan" style="opacity: .8; --fs: max(14px, 1.1em)">No olvides revisar tu bandeja de SPAM</span>
         </div>
       </div>
@@ -52,6 +64,7 @@ export default {
   data() {
     return {
       otp: undefined,
+      loadingBtnVerificationEmail: false,
     }
   },
   head() {
@@ -64,13 +77,46 @@ export default {
     params() {
       return this.$route.params.verification
     },
+    email() {
+      return this.$store.state.currentEmailVerification.email
+    }
+  },
+  mounted() {
+    if (!this.email) {
+      this.$alert("cancel", {desc: "ha ocurrido un error por favor vuelva a intentarlo mas tarde"})
+      this.$router.go(-1)
+    }
+    // if (this.params?.split(":")[1] !== "login") this.sendEmail()
   },
   methods: {
+    sendEmail() {
+      // request token endpoint
+      this.$axios.post(`${this.baseDomainUrl}/usuarios/solicitarTokenCorreo`, {"email": this.email}).then(result => {
+        console.info(result.data) // console
+        this.$alert("success", {title: "Correo enviado", desc: "verifique su bandeja de entrada"})
+      }).catch(err => {
+        console.error(err)
+        this.$alert("cancel", {desc: err.message})
+      })
+    },
     verificationCode() {
+      // if (!this.otp) return;
       if (!(this.otp?.length === 5)) return;
-      this.$store.commit("verificationRedirect")
-      
-      this.$router.push(this.localePath(`/${this.params.split(":")[1]}`))
+      this.loadingBtnVerificationEmail = true
+
+      // confirmation token endpoint
+      this.$axios.post(`${this.baseDomainUrl}/usuarios/validarCorreo`, {"token": this.otp}).then(result => {
+        console.info(result) // console
+        this.loadingBtnVerificationEmail = false
+        // set current verification
+        this.$store.commit("emailVerification", {token: this.otp, email: this.email})
+        // redirection to previous page
+        this.$router.push(this.localePath(`/${this.params.split(":")[1]}`))
+      }).catch(err => {
+        console.error(err)
+        this.loadingBtnVerificationEmail = false
+        this.$alert("cancel", {desc: err.message})
+      })
     },
   }
 };
