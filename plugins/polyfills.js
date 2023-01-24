@@ -135,4 +135,12 @@ export default () => {
     }
   }
   // formatTime() <-- example
+
+  // pad =========================================================================================================//
+  if (!Number.prototype.pad) {
+    Number.prototype.pad = function(n) {
+      return new Array(n).join('0').slice((n || 2) * -1) + this;
+    }
+  }
+  // pad(2) <-- example
 }
