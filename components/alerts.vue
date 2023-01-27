@@ -45,7 +45,7 @@ export default {
     ) {
       // // create alert
       const alert = {
-        key, title, desc, timeout, centered, top, bottom, left, right, color, model: true,
+        key, title, desc, color, timeout, centered, top, bottom, left, right, model: true,
         icon: key, // ---> if img tag
         // icon: key === 'success' ? 'mdi-check-circle' : 'mdi-close-circle', // ---> if mdi icon
       }
