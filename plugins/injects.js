@@ -1,3 +1,5 @@
+import { ALERT_TYPE, SCROLL_TO } from '~/plugins/dictionary';
+
 export default ({app}, inject) => {
   // console-log =========================================================================================================//
   const log = (...msgs) => {
@@ -26,11 +28,11 @@ export default ({app}, inject) => {
 
   // alerts =========================================================================================================//
   const alerts = (key, {title, desc, color, timeout, centered, top, bottom, left, right} = {}) => {
-    if (key === "success" || key === "cancel") {
+    if (ALERT_TYPE.VALUES().includes(key)) {
       app.router.app.$children.find(data=>data.$el === document.querySelector(".v-application")).$refs.alerts.
         GenerateAlert(key, title, desc, color, timeout, centered, top, bottom, left, right);
     } else {
-      throw new Error('Invalid key, try "success" or "cancel"')
+      throw new Error('Invalid key, try using any `ALERT_TYPE` value.')
     }
   }
   // usage $alert(key, {title, desc})
@@ -48,7 +50,7 @@ export default ({app}, inject) => {
 
   // scroll-to =========================================================================================================//
   const scrollTo = id => {
-    if (id === 'top' || id === 'home' || id === '/' || id === '#' || id === '') {
+    if (SCROLL_TO.VALUES().includes(id)) {
       setTimeout(()=> {
         window.scrollTo(0, 1);
       }, 0);

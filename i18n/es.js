@@ -6,6 +6,6 @@ export default {
   // alert component //
   success: "ÉXITO!",
   textSuccess: "Tus cambios han sido guardados satisfactoriamente",
-  cancel: "ERROR!",
-  textCancel: "Algo extraño ha ocurrido, intentalo denuevo",
+  error: "ERROR!",
+  textError: "Algo extraño ha ocurrido, intentalo denuevo",
 };

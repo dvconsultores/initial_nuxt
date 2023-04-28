@@ -8,11 +8,8 @@
 </template>
 
 <script>
-import computeds from '~/mixins/computeds'
-
 export default {
   name: "HomePage",
-  mixins: [computeds],
   data() {
     return {
     }

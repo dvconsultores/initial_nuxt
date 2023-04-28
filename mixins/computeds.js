@@ -1,5 +1,4 @@
 export default {
-  // under testing
   data() {
     return {
       rules: {
@@ -11,7 +10,6 @@ export default {
       }
     }
   },
-  // under testing
   computed: {
     baseDomainUrl() {
       return this.$axios.defaults.baseURL

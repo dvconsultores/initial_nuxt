@@ -11,6 +11,15 @@ export default () => {
   // htmlElement.setProperty({keys, values})  <--- example
 
 
+  // to-capitalize =========================================================================================================//
+  if (!String.prototype.toCapitalize) {
+    String.prototype.toCapitalize = function() {
+      return this.replace(/^\w/, (c) => c.toUpperCase());
+    }
+  }
+  // string.toCapitalize() <-- example
+
+
   // to-kedabcase =========================================================================================================//
   if (!String.prototype.toKedabCase) {
     String.prototype.toKedabCase = function() {

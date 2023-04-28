@@ -55,11 +55,8 @@
 </template>
 
 <script>
-import computeds from '~/mixins/computeds'
-
 export default {
   name: "VerificationEmailPage",
-  mixins: [computeds],
   layout: "empty-layout",
   data() {
     return {

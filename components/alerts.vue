@@ -21,7 +21,7 @@
         <h3 class="font1">{{item.title === item.key ? $t(item.title) : item.title}}</h3>
         <p
           class="font2 p"
-          v-html="item.desc === `text${item.key.replace(/^\w/, (c) => c.toUpperCase())}` ? $t(item.desc) : item.desc"
+          v-html="item.desc === `text${item.key.toCapitalize()}` ? $t(item.desc) : item.desc"
         ></p>
       </div>
     </v-snackbar>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { ALERT_TYPE } from '~/plugins/dictionary';
 export default {
   name: "AlertsComponent",
   data() {
@@ -39,15 +40,15 @@ export default {
   methods: {
     GenerateAlert(
       key, title = key,
-      desc = `text${key.replace(/^\w/, c => c.toUpperCase())}`,
-      color = key === 'success' ? '#A4FDDF' : 'rgb(200, 0, 0)',
+      desc = `text${key.toCapitalize()}`,
+      color = key === ALERT_TYPE.SUCCESS ? '#A4FDDF' : key === ALERT_TYPE.ERROR ? 'rgb(200, 0, 0)' : '',
       timeout = 5000, centered = true, top = true, bottom, left, right
     ) {
       // // create alert
       const alert = {
         key, title, desc, color, timeout, centered, top, bottom, left, right, model: true,
         icon: key, // ---> if img tag
-        // icon: key === 'success' ? 'mdi-check-circle' : 'mdi-close-circle', // ---> if mdi icon
+        // icon: key === ALERT_TYPE.SUCCESS ? 'mdi-check-circle' : key === ALERT_TYPE.ERROR ? 'mdi-close-circle' : '', // ---> if mdi icon
       }
       if (alert.bottom) {alert.top = false}
       this.dataAlerts.push(alert)

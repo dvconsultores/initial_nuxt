@@ -6,6 +6,6 @@ export default {
   // alert component //
   success: "SUCCESS!",
   textSuccess: "Your changes have been successfully saved",
-  cancel: "ERROR!",
-  textCancel: "Something strange has happened, try again",
+  error: "ERROR!",
+  textError: "Something strange has happened, try again",
 };

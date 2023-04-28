@@ -55,11 +55,8 @@
 </template>
 
 <script>
-import computeds from '~/mixins/computeds'
-
 export default {
   name: "NavbarComponent",
-  mixins: [computeds],
   data() {
     return {
       dataNavbar: [

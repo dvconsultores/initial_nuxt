@@ -63,6 +63,7 @@ export default {
     '~/plugins/injects.js',
     '~/plugins/polyfills.js',
     '~/plugins/directives.js',
+    '~/plugins/mixinsImport.js',
     '~/plugins/axios.js',
     '~/plugins/apexchart.js',
     '~/plugins/google-maps.js',
