@@ -25,8 +25,9 @@
     </v-btn>
     <!-- Visible Buttons End -->
 
+    <!-- Lastest Modification 👇 -->
     <v-btn
-      v-if="totalPages > 1"
+      v-if="totalPages > 1 && currentPage < totalPages - 1"
       :disabled="isInLastPage" text
       :class="{ active: isInLastPage }"
       @click="onClickLastPage"
