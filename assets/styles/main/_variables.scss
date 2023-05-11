@@ -4,7 +4,7 @@
 
 //========== Variables ==========//
 :root {
-  /* // // color // // */
+  //------- color -------//
   --primary: #EAE823;
   --secondary: #000000;
   --accent: rgb(176, 114, 0);
@@ -14,7 +14,7 @@
   --success: #3CD4A0;
   --clr-gradient: linear-gradient(to right top,#356D74,#2A505C,#21394A,#1A293D,#172035,#161D33,#161E34,#192539,#1E3143,#244251,#2D5862,#387378,#449492,#53B9B1,#63E2D2);
   --c: var(--clr);
-  /* // // themes // // */
+  //------- themes -------//
   &.light {
     // default color
     --bg-ap: #4ddaeb;
@@ -55,11 +55,11 @@
     // line
     --clr-line: hsl(59, 83%, 53%, .5);
   }
-  /* // // fonts // // */
+  //------- fonts -------//
   --font1: 'Lekton', sans-serif;
   --font2: 'League Gothic', sans-serif;
   --fw: initial;
-  /* // // sizes // // */
+  //------- sizes -------//
   --resizer: clamp(12px, 1vw, 16px);
   --resizer-mobile: clamp(10px, 1.5vw, 12px);
   --margin-global: 9em; // too can use 6em
@@ -69,7 +69,7 @@
   --h-navbar: 100px;
   @include media(max, small) {--h-navbar: 80px}
   --w-scroll: 8px;
-  /* // // shadows // // */
+  //------- shadows -------//
   --sombra-filter: drop-shadow(0px 4px 1px rgba(0, 0, 0, 0.3));
   --sombra-card: 0px 4px 4px rgba(0, 0, 0, 0.25);
   --sombra-btn: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -185,138 +185,6 @@ $skew-left: skewX(-12deg) translateX(-1px);
 .clr_card_2 {background-color: var(--clr-card-2) !important}
 
 //========== custome mixins ==========//
-
-//- parent -//
-@mixin parent() {
-  max-width: var(--parent) !important;
-  width: 100%;
-  margin-inline: auto;
-}
-
-//- subparent -//
-@mixin subparent() {
-  max-width: var(--subparent) !important;
-  width: 100%;
-  margin-inline: auto;
-}
-
-//- pixel border -//
-@mixin pixelBorder() {
-  --c-size: 4.5px;
-  
-  padding: var(--c-size);
-  position: relative;
-  isolation: isolate;
-  clip-path: $clip-path;
-  
-  &::before, &::after {
-    content: "" !important;
-    position: absolute !important;
-    opacity: 1 !important;
-    z-index: -1 !important;
-    clip-path: $clip-path;
-    inset: 0;
-  }
-  
-  // border
-  &::before {
-    background-color: var(--accent) !important;
-  }
-  
-  // body
-  &::after {
-    inset: var(--c-size);
-    background-color: var(--bg);
-  }
-}
-
-//- buttons -//
-@mixin btn() {
-  --bg: var(--primary);
-  --c: #000000;
-  --b: initial;
-  --p: .5em 1em;
-  --w: initial;
-  --max-w: none;
-  --min-w: none;
-  --h: initial;
-  --max-h: none;
-  --min-h: 36px;
-  --g: 5px;
-  --br: 30px;
-  &:has(> .v-btn__content > :only-child) {--br: 10px};
-  --bs: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  --fs: max(16px, 1em);
-  --fw: 300;
-  --ls: -0.005em;
-  --lh: 1;
-  --f: initial;
-  --t: initial;
-  
-  background: var(--bg) !important;
-  color: var(--c) !important;
-  box-shadow: var(--bs) !important;
-  border-radius: var(--br) !important;
-  font-size: var(--fs);
-  padding: var(--p) !important;
-  width: var(--w) !important;
-  max-width: var(--max-w) !important;
-  min-width: var(--min-w) !important;
-  height: var(--h) !important;
-  max-height: var(--max-h) !important;
-  min-height: var(--min-h) !important;
-  border: var(--b);
-  transform: var(--t);
-  filter: var(--f);
-  
-  & :is(span, img, i) {
-    color: var(--c);
-    font-size: 1em;
-    font-weight: var(--fw) !important;
-    text-transform: var(--tt, initial);
-    letter-spacing: var(--ls);
-    line-height: var(--lh);
-  }
-  
-  // margin
-  &, > .v-btn__content {
-    display: flex;
-    gap: var(--g);
-  }
-}
-
-//- cards -//
-@mixin card() {
-  --w: initial;
-  --max-w: none;
-  --min-w: none;
-  --h: initial;
-  --max-h: none;
-  --min-h: none;
-  --bg: var(--clr-card);
-  --c: var(--clr);
-  --b: initial;
-  --p: 1em;
-  --br: 30px;
-  --bs: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  --f: initial;
-  --t: initial;
-
-  width: var(--w) !important;
-  max-width: var(--max-w) !important;
-  min-width: var(--min-w) !important;
-  height: var(--h) !important;
-  max-height: var(--max-h) !important;
-  min-height: var(--min-h) !important;
-  background: var(--bg) !important;
-  color: var(--c) !important;
-  box-shadow: var(--bs) !important;
-  border-radius: var(--br) !important;
-  padding: var(--p);
-  border: var(--b) !important;
-  transform: var(--t);
-  filter: var(--f);
-}
 
 //========== other global vars ==========//
 
