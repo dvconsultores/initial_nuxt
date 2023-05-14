@@ -33,7 +33,7 @@
               v-show="item.input"
               v-model="input"
               solo
-              :rules="[rules.email]"
+              :rules="globalRules.email"
               label="Your email address"
               style="--bs:inset 0px 4px 2px rgba(0, 0, 0, 0.3);--bg:rgba(196, 196, 196, 0.6);--p:0 0 0 12px"
             >
@@ -110,12 +110,6 @@ export default {
         },
       ],
       input: "",
-      rules: {
-        email: value => {
-          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          return pattern.test(value) || 'Invalid e-mail.'
-        },
-      },
     }
   },
   methods: {

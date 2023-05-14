@@ -1,11 +1,14 @@
 export default {
   data() {
     return {
-      rules: {
+      globalRules: {
         required: [(v) => !!v || "Field required"],
         email: [
           (v) => !!v || "Field required",
-          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+          v => {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            return pattern.test(v) || 'Invalid email.'
+          },
         ],
       }
     }

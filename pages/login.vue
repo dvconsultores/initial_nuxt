@@ -16,7 +16,7 @@
               <v-text-field
                 id="username-login"
                 v-model="formLogin.username"
-                :rules="rules.required"
+                :rules="globalRules.required"
                 placeholder="Ingresa tu usuario"
                 hide-details solo
               ></v-text-field>
@@ -28,7 +28,7 @@
                 id="password-login"
                 v-model="formLogin.password"
                 type="password"
-                :rules="rules.required"
+                :rules="globalRules.required"
                 placeholder="Ingresa tu contraseña"
                 hide-details solo
               ></v-text-field>
@@ -73,7 +73,7 @@
                 id="email-register"
                 v-model="formRegister.email"
                 solo hide-details
-                :rules="rules.email"
+                :rules="globalRules.email"
               ></v-text-field>
             </div>
             
@@ -83,7 +83,7 @@
                 id="username-register"
                 v-model="formRegister.username"
                 solo hide-details
-                :rules="rules.required"
+                :rules="globalRules.required"
               ></v-text-field>
             </div>
             
@@ -95,7 +95,7 @@
                   v-model="formRegister.password"
                   type="password"
                   solo hide-details
-                  :rules="rules.required"
+                  :rules="globalRules.required"
                 ></v-text-field>
               </div>
               
@@ -125,7 +125,7 @@
                 type="number"
                 hide-spin-buttons
                 solo hide-details
-                :rules="rules.required"
+                :rules="globalRules.required"
               >
                 <template #prepend>
                   <v-select
@@ -176,7 +176,7 @@
                 id="password-recover"
                 v-model="formRecover.password"
                 type="password"
-                :rules="rules.required"
+                :rules="globalRules.required"
                 placeholder="Ingresa nueva contraseña"
                 hide-details solo
               ></v-text-field>
@@ -254,11 +254,6 @@ export default {
         },
       ],
       rules: {
-        required: [(v) => !!v || "Field required"],
-        email: [
-          (v) => !!v || "Field required",
-          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-        ],
         confirmPasswordRegister: [
           (v) => !!v || "Field required",
           v => this.formRegister.password === this.passwordConfirmerRegister || 'Password must match',
