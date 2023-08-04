@@ -187,4 +187,12 @@ export default {
       })
     },
   },
+
+  // env declarations
+  publicRuntimeConfig: {
+    // myPublicVariable: process.env.PUBLIC_VARIABLE,
+  },
+  privateRuntimeConfig: {
+    // myPrivateToken: process.env.PRIVATE_TOKEN
+  }
 }
